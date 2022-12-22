@@ -1,6 +1,6 @@
 import { back } from "../config/config";
 
-const getCourier = async (setCouriersData, courierStatus, user, id = 'none') => {
+const getCourier = async (courierStatus, user, id = 'none') => {
 
     const jwt = localStorage.getItem('jwt')  
 

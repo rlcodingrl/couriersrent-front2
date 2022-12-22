@@ -21,8 +21,8 @@ const FullInfoCourier = () => {
   useEffect(()=>{
     // console.log(user)
     // console.log(fullInfo.courierId)
-    getCourier(setCourierFullInfo, null, user, fullInfo.courierId).then(res=>{
-      console.log(res);
+    getCourier(null, user, fullInfo.courierId).then(res=>{
+      // console.log(res);
       setCourierFullInfo(res);
     })
   },[fullInfo, user])
