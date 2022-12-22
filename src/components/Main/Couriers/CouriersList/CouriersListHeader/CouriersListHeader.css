@@ -1,0 +1,12 @@
+.couriers-list-header {
+    display: flex;
+    background-color: rgb(240, 240, 240);
+}
+
+.couriers-list-header__col.couriers-list-header__name {
+    width: 200px;
+}
+
+.couriers-list-header__col {
+    width: 100px;
+}

@@ -1,0 +1,12 @@
+.full-info-body {
+    display: flex;
+}
+
+.full-info-clm {
+    width: 25%;
+}
+
+.full-info-line__description {
+    font-size: 14px;
+    color: rgb(62, 97, 97);
+}

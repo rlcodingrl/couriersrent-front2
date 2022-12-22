@@ -1,0 +1,12 @@
+.couriers-item-row {
+    display: flex;
+    background-color: rgba(219, 219, 219, 0.2);
+}
+
+.couriers-item-row__col.couriers-item-row__name {
+    width: 200px;
+}
+
+.couriers-item-row__col {
+    width: 100px;
+}

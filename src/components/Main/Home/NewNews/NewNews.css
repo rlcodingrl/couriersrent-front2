@@ -1,0 +1,9 @@
+.new-news-form {
+    display: block;
+    padding-top:10px;
+}
+
+.new-news-form__input-msg {
+    width: 100%;
+    height: 70px;
+}
