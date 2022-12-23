@@ -1,4 +1,4 @@
-1) user info keep in context
-
 what to do 
-1) error handler (fetch fullinfo)
+1) error handler (fetch fullinfo). login 
+2) edit courier
+3) chaT 

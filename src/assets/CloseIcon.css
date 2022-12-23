@@ -1,0 +1,4 @@
+.close-icon:hover {
+    fill:rgb(0, 119, 255);
+    transform: scale(1.2);
+}

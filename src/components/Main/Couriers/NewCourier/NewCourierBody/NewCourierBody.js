@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import {useForm} from 'react-hook-form'
+import CloseIcon from "../../../../../assets/CloseIcon";
 
 import createNewUser from "../../../../../services/createNewUser";
 
@@ -41,7 +42,9 @@ const NewCourierBody = ({setNewCourier}) => {
   return (
     <form className="new-courier-form" onSubmit={handleSubmit(onSubmit)} onChange={()=>{setIfCreateSuccessful(false)}}>
       <div className="new-courier-header">
-        <span className='close-btn def-btn' onClick={()=>{reset();setNewCourier(false)}}>Close new courier</span>
+        <span className='close-btn def-btn' onClick={()=>{reset();setNewCourier(false)}}>
+          {CloseIcon()}
+        </span>
       </div>
       <div className="new-courier-body">
         <div className="new-courier-1clm new-courier-clm">

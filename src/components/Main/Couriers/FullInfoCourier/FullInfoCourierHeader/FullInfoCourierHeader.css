@@ -5,3 +5,8 @@
 .full-info-header {
     text-align: right;
 }
+
+.close-icon {
+    transition: 0.4s;
+}
+
