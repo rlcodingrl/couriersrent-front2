@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import { loginHandler } from "../../services/auth/loginHandler";
 import { UserContext } from "../app/app";
+import { spinnerContext } from "../AuthOrApp/AuthOrApp";
 
 import "./Auth.css";
 
 const Auth = ({ setIfAuthenticated }) => {
   let { user, setUser } = useContext(UserContext);
+  let setSpinner = useContext(spinnerContext);
 
   const [form, setForm] = useState({ login: "", password: "" });
 
@@ -19,6 +21,7 @@ const Auth = ({ setIfAuthenticated }) => {
       <form
         action=""
         onSubmit={async (e) => {
+          setSpinner(true);
           e.preventDefault();
           await loginHandler(form, setIfAuthenticated, user, setUser);
           // console.log(res);
