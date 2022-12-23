@@ -47,8 +47,8 @@ const Couriers = ({status}) => {
         <CouriersList />
 
       </div>
-      
-      <FullInfoCourier/>
+      {/* {console.log(fullInfo)} */}
+      {fullInfo.active===true&&<FullInfoCourier/>}
       <NewCourier/>
 
     </courierUpdateContext.Provider>

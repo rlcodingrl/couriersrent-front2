@@ -35,7 +35,9 @@ const CourierItemRowMenu = ({courierId}) => {
       {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Edit</div>:null}
       {user.role === 'admin'
         ?<div className="couriers-item-row__col def-btn" 
-              onClick={()=>{deleteCourier(courierId,setCourierCounter)}}>
+              onClick={()=>{
+                setSpinner(true);
+                deleteCourier(courierId,setCourierCounter)}}>
           Delete
           </div>
         :null}
