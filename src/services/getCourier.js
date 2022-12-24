@@ -41,10 +41,10 @@ const getCourier = async (courierStatus, user, id = 'none') => {
   const resFunc = fetch(path, requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result.data.courier)
+      // console.log(result.data.courier)
     //   console.log(result.data.couriers);
       if (id !== 'none') { 
-        console.log(result.data.courier)
+        // console.log(result.data.courier)
         return result.data.courier }
       console.log(filterCouriers(result.data.couriers))
       return filterCouriers(result.data.couriers);

@@ -21,12 +21,11 @@ const FullInfoCourier = () => {
   
 
   useEffect(()=>{
-    console.log('spinner appear')
+    // console.log('spinner appear')
     if (fullInfo.active===true) {
-      console.log('fullInfo.active===true')
       setSpinner(true)
       getCourier(null, user, fullInfo.courierId).then(res=>{
-      console.log('spinner false')
+      // console.log('spinner false')
       setSpinner(false)
       setCourierFullInfo(res);
     })
