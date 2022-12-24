@@ -1,6 +1,7 @@
 .couriers-list-header {
     display: flex;
     background-color: rgb(240, 240, 240);
+    padding: 0px 15px 0px 15px;
 }
 
 .couriers-list-header__col.couriers-list-header__name {

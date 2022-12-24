@@ -1,0 +1,11 @@
+.add-icon:hover {
+    fill:rgb(74, 250, 112);
+    transform: scale(1.2) rotate(45deg);
+
+}
+
+.add-icon {
+    display: block;
+    transition: 0.4s;
+    transform:  rotate(45deg);
+}

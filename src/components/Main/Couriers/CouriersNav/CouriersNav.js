@@ -5,6 +5,7 @@ import "./CouriersNav.css";
 
 import { UserContext } from "../../../app/app";
 import { newCourierContext } from "../Couriers";
+import AddIcon from "../../../../assets/AddIcon";
 
 const CouriersNav = () => {
 
@@ -14,7 +15,7 @@ const CouriersNav = () => {
 
   return (
     <div className="couriers-nav">
-      {user.role==="admin"?<a href="#" onClick={()=>{setNewCourier(true)}}>Create new user</a>:null}
+      {user.role==="admin"?<span className="def-btn" onClick={()=>{setNewCourier(true)}}>{AddIcon()}</span>:null}
     </div>
   );
 };
