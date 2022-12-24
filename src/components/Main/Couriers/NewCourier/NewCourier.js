@@ -7,14 +7,14 @@ import { newCourierContext } from "../Couriers";
 
 import NewCourierBody from "./NewCourierBody";
 
-const NewCourier = () => {
+const NewCourier = ({id}) => {
 
   const {newCourier,setNewCourier} = useContext(newCourierContext)
 
   return (
     <div className={newCourier===true?"new-courier active":"new-courier"}>
 
-      <NewCourierBody setNewCourier={setNewCourier}></NewCourierBody>
+      <NewCourierBody setNewCourier={setNewCourier} id={id}/>
 
     </div>
   );
