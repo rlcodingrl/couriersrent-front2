@@ -8,6 +8,8 @@ import { fullInfoContext } from "../../../../Couriers";
 import { courierUpdateContext } from "../../../../Couriers"; 
 import { spinnerContext } from "../../../../../../AuthOrApp/AuthOrApp";
 import { newCourierContext } from "../../../../Couriers";
+import { nFECourierContext } from "../../../../Couriers";
+
 
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 import deleteCourier from "../../../../../../../services/deleteCourier";
@@ -19,6 +21,7 @@ const CourierItemRowMenu = ({courierId}) => {
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
   const { setNewCourier } = useContext(newCourierContext)
+  const { setNFECourier } = useContext(nFECourierContext)
 
   // eslint-disable-next-line
   const {fullInfo,setFullInfo}=useContext(fullInfoContext)
@@ -35,6 +38,16 @@ const CourierItemRowMenu = ({courierId}) => {
          </div>
         :null
       }
+
+      {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
+              ?<div className="couriers-item-row__col def-btn" 
+                    onClick={()=>{setNFECourier({active: 'fullInfo', courierId: courierId});
+                                  // console.log(courierId)
+                                  }}>
+                      Full info2
+              </div>
+              :null
+            }
 
       {user.role === 'admin'
         ?<div className="couriers-item-row__col def-btn"

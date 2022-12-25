@@ -47,6 +47,7 @@ const NewCourierBody = ({setNewCourier}) => {
         </span>
       </div>
       <div className="new-courier-body">
+
         <div className="new-courier-1clm new-courier-clm">
           <label className="new-courier-line">
             <div className="new-courier-line__description">Name</div>
@@ -323,12 +324,14 @@ const NewCourierBody = ({setNewCourier}) => {
             </div>
           </label>
         </div>
+
         <div className="full-info-4clm full-info-clm">
           place for chat
           <input type="submit" disabled={!isValid} />
           {/* <input type="button" onClick={()=>{console.log('reset'); document.querySelector(".new-courier-form").reset()}} value="reset"/> */}
-          {ifCreateSuccessful && <p className="success-msg">user creating done</p>}
+          
         </div>
+        
       </div>
     </form>
   );

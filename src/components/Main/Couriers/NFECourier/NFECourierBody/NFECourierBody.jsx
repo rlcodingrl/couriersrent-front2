@@ -2,13 +2,11 @@ import React from "react";
 
 import "./NFECourierBody.css";
 
-const NFECourierBody = () => {
-
-
+const NFECourierBody = (props) => {
 
     return (
         <div className="nfe-courier-body">
-            <span>this is NFECourierBody </span>
+            { props.children }
         </div>
         
     )

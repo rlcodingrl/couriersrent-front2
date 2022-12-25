@@ -1,6 +1,5 @@
 import React from "react";
 
-import Pulse from "./Pulse.svg";
 import "./Spinner.css";
 
 const Spinner = () => {
