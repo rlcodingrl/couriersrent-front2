@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {useForm} from 'react-hook-form'
 
 import "./NFECourier.css";
@@ -8,10 +8,11 @@ import "./NFECourier.css";
 import { courierUpdateContext } from "../Couriers";
 import { spinnerContext } from "../../../AuthOrApp/AuthOrApp";
 import { nFECourierContext } from "../Couriers";
+import { UserContext } from "../../../app/app";
 
 // functions
 import createNewUser from "../../../../services/createNewUser";
-
+import getCourier from "../../../../services/getCourier";
 // components
 import NFECourierHeader from "./NFECourierHeader";
 import NFECourierBody from "./NFECourierBody";
@@ -26,8 +27,23 @@ const NFECourier = () => {
   const { nFECourier, setNFECourier } = useContext(nFECourierContext);
   const {setCourierCounter} = useContext(courierUpdateContext)
   const setSpinner = useContext(spinnerContext);
+  const {user}=useContext(UserContext)
   // state
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
+  const [courierFullInfo, setCourierFullInfo]=useState({})
+
+  console.log(nFECourier);
+
+  useEffect(()=>{
+    if (nFECourier.active==='fullInfo') {
+      setSpinner(true);
+      getCourier(null, user, nFECourier.courierId).then(res => {
+        setSpinner(false);
+        console.log(res)
+        setCourierFullInfo(res)
+      })
+    }
+  },[])
 
   const {
     register,
@@ -52,13 +68,15 @@ const NFECourier = () => {
   };
 
   return (
-    <div className="nfe-courier" onSubmit={handleSubmit(onSubmit)}>
+    <div className="nfe-courier" 
+          onSubmit={handleSubmit(onSubmit)}
+          onChange={()=>{setIfCreateSuccessful(false)}}>
       <form className="new-courier-form">
         <NFECourierHeader reset={reset}/>
         <NFECourierBody>
-          <NFECourier_1clm form={{register, errors}}/>
-          <NFECourier_2clm form={{register, errors}}/>
-          <NFECourier_3clm form={{register, errors}}/>
+          <NFECourier_1clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
+          <NFECourier_2clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
+          <NFECourier_3clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
           <NFECourier_4clm form={{isValid}} ifCreateSuccessful={ifCreateSuccessful}/>
         </NFECourierBody>
       </form>
