@@ -14,8 +14,8 @@ const NFECourier_3clm = ({ form, courierFullInfo}) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Pers/Bus</div>
         <div>
-          {nFECourier.active === "new" && (
-            <select {...register("persOrBus")} value="Bus">
+          {nFECourier.active !== "fullInfo" && (
+            <select {...register("persOrBus")} value={courierFullInfo.type||'Bus'}>
               <option value="Pers">Pers</option>
               <option value="Bus">Bus</option>
             </select>
@@ -30,8 +30,8 @@ const NFECourier_3clm = ({ form, courierFullInfo}) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Sum</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.amount}
               {...register("sum", {
                 required: "Sum is required",
               })}
@@ -47,8 +47,8 @@ const NFECourier_3clm = ({ form, courierFullInfo}) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Used Banks</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.used_banks}
               {...register("usedBanks", {
                 required: false,
               })}
@@ -64,8 +64,8 @@ const NFECourier_3clm = ({ form, courierFullInfo}) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Started day</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.startedDay}
               {...register("startedDay", {
                 required: false,
               })}
@@ -83,8 +83,8 @@ const NFECourier_3clm = ({ form, courierFullInfo}) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Status</div>
         <div>
-          {nFECourier.active === "new" && (
-            <select {...register("status")} value="Free">
+          {nFECourier.active !== "fullInfo" && (
+            <select {...register("status")} value={courierFullInfo.status||'Free'}>
               <option value="Free">Free</option>
             </select>
           )}
@@ -98,8 +98,8 @@ const NFECourier_3clm = ({ form, courierFullInfo}) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Comment</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.comment}
               {...register("comment", {
                 required: false,
               })}

@@ -18,6 +18,9 @@ const NFECourier_4clm = ({form, ifCreateSuccessful}) => {
             {nFECourier.active === "new" && (
             <input type="submit" disabled={!isValid} />
           )}
+          {nFECourier.active === "edit" && (
+            <input type="submit" />
+          )}
             
 
           {ifCreateSuccessful && <p className="success-msg">user creating done</p>}

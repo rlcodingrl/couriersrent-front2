@@ -24,12 +24,12 @@ const CourierItemRowMenu = ({courierId}) => {
   const { setNFECourier } = useContext(nFECourierContext)
 
   // eslint-disable-next-line
-  const {fullInfo,setFullInfo}=useContext(fullInfoContext)
+  // const {fullInfo,setFullInfo}=useContext(fullInfoContext)
 
 
   return (
     <div className="couriers-item-row-menu">
-      {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
+      {/* {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{setFullInfo({active: true, courierId: courierId});
                             // console.log(courierId)
@@ -37,7 +37,7 @@ const CourierItemRowMenu = ({courierId}) => {
                 Full info
          </div>
         :null
-      }
+      } */}
 
       {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
               ?<div className="couriers-item-row__col def-btn" 
@@ -53,7 +53,7 @@ const CourierItemRowMenu = ({courierId}) => {
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{
                 console.log(`edit click ${courierId}`)
-                setNewCourier(courierId)
+                setNFECourier({active: 'edit', courierId: courierId})
               }}
                  >Edit
         </div>:null}

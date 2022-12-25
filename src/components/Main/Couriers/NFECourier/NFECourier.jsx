@@ -43,6 +43,14 @@ const NFECourier = () => {
         setCourierFullInfo(res)
       })
     }
+    if (nFECourier.active==='edit') {
+      setSpinner(true);
+      getCourier(null, user, nFECourier.courierId).then(res => {
+        setSpinner(false);
+        console.log(res)
+        setCourierFullInfo(res)
+      })
+    }
   },[])
 
   const {
@@ -52,12 +60,20 @@ const NFECourier = () => {
     reset,
   } = useForm({
     mode: "all",
+    defaultValues: {
+      firstName: courierFullInfo.name,
+      lastName: '',
+    }
   });
+
+  console.log(courierFullInfo.name)
 
   const onSubmit = (data) => {
     console.log(data);
     setSpinner(true);
-    createNewUser(data).then(res=>{
+
+    if ( nFECourier.active==='new' ) {
+      createNewUser(data).then(res=>{
         if (res.status===true) { 
           console.log('user created successful')
           setIfCreateSuccessful(true);
@@ -65,6 +81,12 @@ const NFECourier = () => {
           reset()   
         }
     })
+    }
+
+    if ( nFECourier.active==='edit' ) {
+      console.log(`we need edit ${data}`)
+    }
+    
   };
 
   return (

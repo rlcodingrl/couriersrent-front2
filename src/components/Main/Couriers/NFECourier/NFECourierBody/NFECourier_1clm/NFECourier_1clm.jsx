@@ -14,8 +14,10 @@ const NFECourier_1clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Name</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input 
+            // defaultValue={courierFullInfo.name}
+                        defaultValue={courierFullInfo.name}
               {...register("firstName", {
                 required: "Name is required",
                 minLength: {
@@ -35,8 +37,8 @@ const NFECourier_1clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Holder Name</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.holderName}
               {...register("holderName", {
                 required: "Holder Name is required",
                 minLength: {
@@ -58,8 +60,8 @@ const NFECourier_1clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">DOB (mm/dd/yyyy)</div>
         <div>
-        {nFECourier.active === "new" && (
-            <input
+        {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.dob}
             {...register("DOB", {
               required: "DOB is required",
               // pattern:  /(\d{2}\/\d{2}\/\d{4})/
@@ -77,8 +79,8 @@ const NFECourier_1clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Cell Phone</div>
         <div>
-        {nFECourier.active === "new" && (
-            <input
+        {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.cellPhone}
             {...register("cellPhone", {
               required: "Cell Phone is required",
             })}
@@ -95,8 +97,8 @@ const NFECourier_1clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Street Address</div>
         <div>
-        {nFECourier.active === "new" && (
-                      <input
+        {nFECourier.active !== "fullInfo" && (
+                      <input defaultValue={courierFullInfo.address}
                       {...register("streetAddress", {
                         required: "Street Address is required",
                       })}

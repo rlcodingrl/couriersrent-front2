@@ -14,8 +14,8 @@ const NFECourier_2clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Bank</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.bank}
               {...register("bank", {
                 required: "Bank is required",
               })}
@@ -31,8 +31,8 @@ const NFECourier_2clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Accounting number</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.accountingNumber}
               {...register("accountingNumber", {
                 required: "Accounting number is required",
               })}
@@ -50,8 +50,8 @@ const NFECourier_2clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Routing number</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.routingNumber}
               {...register("routingNumber", {
                 required: "Routing number is required",
               })}
@@ -69,8 +69,8 @@ const NFECourier_2clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">Wire routing number</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.wireroutingNumber}
               {...register("wireRoutingNumber", {
                 required: "Wire routing number is required",
               })}
@@ -88,8 +88,8 @@ const NFECourier_2clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">SSN</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.ssn}
               {...register("ssn", {
                 required: "SSN is required",
               })}
@@ -105,8 +105,8 @@ const NFECourier_2clm = ({ form, courierFullInfo }) => {
       <label className="new-courier-line">
         <div className="new-courier-line__description">EIN</div>
         <div>
-          {nFECourier.active === "new" && (
-            <input
+          {nFECourier.active !== "fullInfo" && (
+            <input defaultValue={courierFullInfo.ein}
               {...register("ein", {
                 required: "EIN is required",
               })}
