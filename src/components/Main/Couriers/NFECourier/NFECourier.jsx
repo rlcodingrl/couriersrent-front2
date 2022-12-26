@@ -13,6 +13,7 @@ import { UserContext } from "../../../app/app";
 // functions
 import createNewUser from "../../../../services/createNewUser";
 import getCourier from "../../../../services/getCourier";
+import editCourier from "../../../../services/editCourier";
 // components
 import NFECourierHeader from "./NFECourierHeader";
 import NFECourierBody from "./NFECourierBody";
@@ -47,11 +48,14 @@ const NFECourier = () => {
 
     if (nFECourier.active==='edit') {
       setSpinner(true);
-      getCourier(null, user, nFECourier.courierId).then(res => {
+      getCourier(null, user, nFECourier.courierId)
+      .then(res => {
         setSpinner(false);
         console.log(res)
         setCourierFullInfo(res)
+        reset()
       })
+  
     }
   },[])
 
@@ -62,12 +66,12 @@ const NFECourier = () => {
     reset,
   } = useForm({
     mode: "all",
-    defaultValues: {
-      firstName: courierFullInfo.name
-    }
+    // defaultValues: {
+    //   firstName: courierFullInfo.name
+    // }
   });  
 
-  console.log(courierFullInfo.name)
+  // console.log(courierFullInfo)
 
   const onSubmit = (data) => {
     console.log(data);
@@ -83,9 +87,19 @@ const NFECourier = () => {
         }
     })
     }
-
+    // onSubmit edit
     if ( nFECourier.active==='edit' ) {
-      console.log(`we need edit ${data}`)
+      console.log(`we need edit ${data}`);
+      console.log(data)
+      console.log('this is state')
+      editCourier(data, nFECourier.courierId).then(res=>{
+        console.log(res)
+        setIfCreateSuccessful(true);
+        setCourierCounter(prev=>prev+1);
+        // reset();
+      })
+      
+      
     }
     
   };

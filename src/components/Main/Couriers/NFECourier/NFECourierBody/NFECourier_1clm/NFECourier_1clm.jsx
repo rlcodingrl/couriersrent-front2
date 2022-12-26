@@ -16,7 +16,7 @@ const NFECourier_1clm = ({ form, courierFullInfo }) => {
         <div>
           {nFECourier.active !== "fullInfo" && (
             <input 
-              // defaultValue={courierFullInfo.name}
+              defaultValue={courierFullInfo.name}
               // defaultValue={courierFullInfo.name}
               {...register("firstName", {
                 required: "Name is required",
@@ -38,7 +38,7 @@ const NFECourier_1clm = ({ form, courierFullInfo }) => {
         <div className="new-courier-line__description">Holder Name</div>
         <div>
           {nFECourier.active !== "fullInfo" && (
-            <input 
+            <input defaultValue={courierFullInfo.holderName}
               {...register("holderName", {
                 required: "Holder Name is required",
                 minLength: {

@@ -29,15 +29,6 @@ const CourierItemRowMenu = ({courierId}) => {
 
   return (
     <div className="couriers-item-row-menu">
-      {/* {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
-        ?<div className="couriers-item-row__col def-btn" 
-              onClick={()=>{setFullInfo({active: true, courierId: courierId});
-                            // console.log(courierId)
-                            }}>
-                Full info
-         </div>
-        :null
-      } */}
 
       {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
               ?<div className="couriers-item-row__col def-btn" 

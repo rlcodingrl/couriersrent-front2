@@ -12,21 +12,24 @@ const NFECourier_4clm = ({form, ifCreateSuccessful}) => {
     const {nFECourier} = useContext(nFECourierContext)
 
     return (
-        <div className="nfe-courier-4-clm nfe-courier-clm">
-            <div>Place for chat</div>
+      <div className="nfe-courier-4-clm nfe-courier-clm">
+        <div>Place for chat</div>
 
-            {nFECourier.active === "new" && (
-            <input type="submit" disabled={!isValid} />
-          )}
-          {nFECourier.active === "edit" && (
-            <input type="submit" />
-          )}
-            
+        {nFECourier.active === "new" && (
+          <input type="submit" disabled={!isValid} />
+        )}
+        {nFECourier.active === "edit" && <input type="submit" />}
 
-          {ifCreateSuccessful && <p className="success-msg">user creating done</p>}
-        </div>
-        
-    )
+        {ifCreateSuccessful && (
+          <p className="success-msg">user
+          {console.log(nFECourier.active)}
+          {console.log(nFECourier.active==='new')}
+          {nFECourier.active==='new'&&<span> creating </span>}
+          {nFECourier.active==='edit'&&<span> editing </span>}
+          done</p>
+        )}  
+      </div>
+    );
     
 }
 
