@@ -31,10 +31,11 @@ const NFECourier = () => {
   // state
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
   const [courierFullInfo, setCourierFullInfo]=useState({})
+  // const [someString] = useState('test554')
 
-  console.log(nFECourier);
 
   useEffect(()=>{
+
     if (nFECourier.active==='fullInfo') {
       setSpinner(true);
       getCourier(null, user, nFECourier.courierId).then(res => {
@@ -43,6 +44,7 @@ const NFECourier = () => {
         setCourierFullInfo(res)
       })
     }
+
     if (nFECourier.active==='edit') {
       setSpinner(true);
       getCourier(null, user, nFECourier.courierId).then(res => {
@@ -61,10 +63,9 @@ const NFECourier = () => {
   } = useForm({
     mode: "all",
     defaultValues: {
-      firstName: courierFullInfo.name,
-      lastName: '',
+      firstName: courierFullInfo.name
     }
-  });
+  });  
 
   console.log(courierFullInfo.name)
 
@@ -94,6 +95,8 @@ const NFECourier = () => {
           onSubmit={handleSubmit(onSubmit)}
           onChange={()=>{setIfCreateSuccessful(false)}}>
       <form className="new-courier-form">
+
+     
         <NFECourierHeader reset={reset}/>
         <NFECourierBody>
           <NFECourier_1clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
