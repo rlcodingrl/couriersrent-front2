@@ -6,3 +6,24 @@
 .nfe-courier-clm {
     width: 25%;
 }
+
+.new-courier-line__description {
+    color: grey;
+}
+
+.new-courier-line__error {
+    display: block;
+    color: red;
+    font-size: 10px;
+    /* height: 10px; */
+}
+
+.new-courier-line {
+    min-height: 65px;
+    display: block;
+}
+
+.new-courier-line__error p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}

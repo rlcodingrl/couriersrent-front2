@@ -4,10 +4,9 @@ import "./CouriersItemRowMenu.css";
 
 import { UserContext } from "../../../../../../app/app";
 import { StatusContext } from "../../../../Couriers";
-import { fullInfoContext } from "../../../../Couriers";
+
 import { courierUpdateContext } from "../../../../Couriers"; 
 import { spinnerContext } from "../../../../../../AuthOrApp/AuthOrApp";
-import { newCourierContext } from "../../../../Couriers";
 import { nFECourierContext } from "../../../../Couriers";
 
 
@@ -20,12 +19,10 @@ const CourierItemRowMenu = ({courierId}) => {
   const {user} = useContext(UserContext)
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
-  const { setNewCourier } = useContext(newCourierContext)
+
   const { setNFECourier } = useContext(nFECourierContext)
 
-  // eslint-disable-next-line
-  // const {fullInfo,setFullInfo}=useContext(fullInfoContext)
-
+ 
 
   return (
     <div className="couriers-item-row-menu">
@@ -35,7 +32,7 @@ const CourierItemRowMenu = ({courierId}) => {
                     onClick={()=>{setNFECourier({active: 'fullInfo', courierId: courierId});
                                   // console.log(courierId)
                                   }}>
-                      Full info2
+                      Full info
               </div>
               :null
             }
