@@ -16,7 +16,7 @@ const NFECourier_4clm = ({form, ifCreateSuccessful}) => {
         <div>Place for chat</div>
 
         {nFECourier.active === "new" && (
-          <input type="submit" disabled={!isValid} />
+          <input className="nfe-courier__submit-btn" type="submit" disabled={!isValid} />
         )}
         {nFECourier.active === "edit" && <input type="submit" />}
 

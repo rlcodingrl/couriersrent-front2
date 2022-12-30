@@ -89,11 +89,11 @@ const NFECourier = () => {
     }
     // onSubmit edit
     if ( nFECourier.active==='edit' ) {
-      console.log(`we need edit ${data}`);
-      console.log(data)
-      console.log('this is state')
+      // console.log(`we need edit ${data}`);
+      // console.log(data)
+      // console.log('this is state')
       editCourier(data, nFECourier.courierId).then(res=>{
-        console.log(res)
+        // console.log(res)
         setIfCreateSuccessful(true);
         setCourierCounter(prev=>prev+1);
         // reset();
