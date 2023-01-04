@@ -18,7 +18,7 @@ const NFECourier_4clm = ({form, ifCreateSuccessful}) => {
         {nFECourier.active === "new" && (
           <input className="nfe-courier__submit-btn" type="submit" disabled={!isValid} />
         )}
-        {nFECourier.active === "edit" && <input type="submit" />}
+        {nFECourier.active === "edit" && <input className="nfe-courier__submit-btn" type="submit" />}
 
         {ifCreateSuccessful && (
           <p className="success-msg">user
