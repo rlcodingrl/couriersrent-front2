@@ -6,11 +6,15 @@ import { UserContext } from "../app/app";
 import { ifValidJwtFunc } from "../../services/auth/ifValidJwtFunc";
 import Spinner from "../Spinner";
 
-export const spinnerContext = React.createContext(false)
+//redux
+import { useSelector } from "react-redux";
 
-
+export const spinnerContext = React.createContext(false);
 
 const AuthOrApp = () => {
+
+  const spinnerRedux = useSelector(state=>state.spinner)
+
   let { user, setUser, ifAuthenticated, setIfAuthenticated } =
     useContext(UserContext);
 
@@ -20,7 +24,7 @@ const AuthOrApp = () => {
     ifValidJwtFunc(user.jwt, setIfAuthenticated, setUser);
     // eslint-disable-next-line
   }, []);
-  const [spinner, setSpinner] = useState(false)
+  const [spinner, setSpinner] = useState(false);
 
   return (
     <>
@@ -34,6 +38,7 @@ const AuthOrApp = () => {
           <Auth setIfAuthenticated={setIfAuthenticated} />
         )}
         {spinner ? <Spinner /> : null}
+        {spinnerRedux ? <Spinner /> : null}
       </spinnerContext.Provider>
     </>
   );

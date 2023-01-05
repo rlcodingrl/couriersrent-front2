@@ -17,6 +17,9 @@ import editCourier from "../../../../services/editCourier";
 // components
 import NFECourierHeader from "./NFECourierHeader";
 import NFECourierBody from "./NFECourierBody";
+//redux
+import { setSpinnerFalse, setSpinnerTrue } from "../../../store/spinnerReducer";
+import {useDispatch} from "react-redux";
 
 import NFECourier_1clm from "./NFECourierBody/NFECourier_1clm";
 import NFECourier_2clm from "./NFECourierBody/NFECourier_2clm";
@@ -32,16 +35,20 @@ const NFECourier = () => {
   // state
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
   const [courierFullInfo, setCourierFullInfo]=useState({})
-  // const [someString] = useState('test554')
-
+  //redux
+  const dispatch = useDispatch()
 
   useEffect(()=>{
 
+    
+
     if (nFECourier.active==='fullInfo') {
-      setSpinner(true);
+      // setSpinner(true);
+      dispatch(setSpinnerTrue())
       getCourier(null, user, nFECourier.courierId).then(res => {
-        setSpinner(false);
-        console.log(res)
+        // setSpinner(false);
+        dispatch(setSpinnerFalse())
+        // console.log(res)
         setCourierFullInfo(res)
       })
     }
