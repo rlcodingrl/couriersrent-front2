@@ -21,7 +21,7 @@ const AllNews = ({newsCounter}) => {
   
   useEffect(()=>{
 
-    // setSpinner(true);
+
     dispatch(setSpinnerTrue())
     getAllNews().then(res=>{
       setNews(res)
