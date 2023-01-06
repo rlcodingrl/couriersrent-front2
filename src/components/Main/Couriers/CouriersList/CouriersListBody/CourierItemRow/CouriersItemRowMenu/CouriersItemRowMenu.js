@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 
 import "./CouriersItemRowMenu.css";
 
+//context
 import { UserContext } from "../../../../../../app/app";
 import { StatusContext } from "../../../../Couriers";
-
 import { courierUpdateContext } from "../../../../Couriers"; 
-import { spinnerContext } from "../../../../../../AuthOrApp/AuthOrApp";
 import { nFECourierContext } from "../../../../Couriers";
 
 
@@ -14,6 +13,7 @@ import changeCourierStatus from "../../../../../../../services/changeCourierStat
 import deleteCourier from "../../../../../../../services/deleteCourier";
 
 //redux
+// eslint-disable-next-line
 import { setSpinnerFalse, setSpinnerTrue } from "../../../../../../store/spinnerReducer";
 import {useDispatch} from "react-redux";
 
@@ -21,14 +21,10 @@ const CourierItemRowMenu = ({courierId}) => {
   //redux
   const dispatch = useDispatch()
 
-  const setSpinner = useContext(spinnerContext)
   const {user} = useContext(UserContext)
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
-
   const { setNFECourier } = useContext(nFECourierContext)
-
- 
 
   return (
     <div className="couriers-item-row-menu">
@@ -57,7 +53,6 @@ const CourierItemRowMenu = ({courierId}) => {
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{
                 dispatch(setSpinnerTrue())
-                // setSpinner(true);
                 deleteCourier(courierId,setCourierCounter)}}>
           Delete
           </div>
@@ -67,10 +62,8 @@ const CourierItemRowMenu = ({courierId}) => {
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{
                 dispatch(setSpinnerTrue())
-                // setSpinner(true)
                 changeCourierStatus(courierId,user.name,setCourierCounter).then(res=> {
                   if (!res) {
-                  // setSpinner(false)
                 }})
                 }}>
                 Reserve
@@ -80,13 +73,11 @@ const CourierItemRowMenu = ({courierId}) => {
       {(user.role === 'user')&&(courierStatus==='reserved')
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{
-                // setSpinner(true)
                 dispatch(setSpinnerTrue())
                 changeCourierStatus(courierId,'Free',setCourierCounter).then(res=> {
                   console.log(res);
                   if (!res) {
-                  
-                  // setSpinner(false)
+                
                 }})
                 }}>
                 Unreserve

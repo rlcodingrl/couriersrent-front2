@@ -1,12 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./AllNews.css";
 
 import getAllNews from "../../../../services/news/getAllNews";
 import NewsItemRow from "./NewsItemRow";
-
-import { spinnerContext } from "../../../AuthOrApp/AuthOrApp";
-
 
 //redux
 import { setSpinnerFalse, setSpinnerTrue } from "../../../store/spinnerReducer";
@@ -17,7 +14,7 @@ const AllNews = ({newsCounter}) => {
   const dispatch = useDispatch()  
 
   const [news, setNews]=useState([])
-  const setSpinner = useContext(spinnerContext)
+  // const setSpinner = useContext(spinnerContext)
   
   useEffect(()=>{
 

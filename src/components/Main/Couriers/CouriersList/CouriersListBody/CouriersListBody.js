@@ -7,8 +7,6 @@ import getCouriers from "../../../../../services/getCouriers";
 import couriersDataDef from "../../../../../data/couriersDataDef";
 import { StatusContext } from "../../Couriers";
 import { UserContext } from "../../../../app/app";
-import { spinnerContext } from "../../../../AuthOrApp/AuthOrApp";
-
 import { courierUpdateContext } from "../../Couriers";
 
 //redux
@@ -21,7 +19,6 @@ const CouriersListBody = () => {
   // eslint-disable-next-line
   const { courierCounter, setCourierCounter } = useContext(courierUpdateContext)
 
-  // const setSpinner = useContext(spinnerContext)
 
   const [couriersData, setCouriersData] = useState(couriersDataDef);
 
