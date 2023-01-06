@@ -18,7 +18,6 @@ const AllNews = ({newsCounter}) => {
 
   const [news, setNews]=useState([])
   const setSpinner = useContext(spinnerContext)
-  // console.log(news)
   
   useEffect(()=>{
 
