@@ -27,7 +27,6 @@ const AllNews = ({newsCounter}) => {
     getAllNews().then(res=>{
       setNews(res)
       dispatch(setSpinnerFalse())
-      // setSpinner(false);
     })
     // eslint-disable-next-line
   },[newsCounter])
