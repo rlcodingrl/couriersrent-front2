@@ -13,7 +13,13 @@ import { nFECourierContext } from "../../../../Couriers";
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 import deleteCourier from "../../../../../../../services/deleteCourier";
 
+//redux
+import { setSpinnerFalse, setSpinnerTrue } from "../../../../../../store/spinnerReducer";
+import {useDispatch} from "react-redux";
+
 const CourierItemRowMenu = ({courierId}) => {
+  //redux
+  const dispatch = useDispatch()
 
   const setSpinner = useContext(spinnerContext)
   const {user} = useContext(UserContext)
@@ -50,7 +56,8 @@ const CourierItemRowMenu = ({courierId}) => {
       {user.role === 'admin'
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{
-                setSpinner(true);
+                dispatch(setSpinnerTrue())
+                // setSpinner(true);
                 deleteCourier(courierId,setCourierCounter)}}>
           Delete
           </div>
@@ -59,7 +66,8 @@ const CourierItemRowMenu = ({courierId}) => {
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{
-                setSpinner(true)
+                dispatch(setSpinnerTrue())
+                // setSpinner(true)
                 changeCourierStatus(courierId,user.name,setCourierCounter).then(res=> {
                   if (!res) {
                   // setSpinner(false)
@@ -72,7 +80,8 @@ const CourierItemRowMenu = ({courierId}) => {
       {(user.role === 'user')&&(courierStatus==='reserved')
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{
-                setSpinner(true)
+                // setSpinner(true)
+                dispatch(setSpinnerTrue())
                 changeCourierStatus(courierId,'Free',setCourierCounter).then(res=> {
                   console.log(res);
                   if (!res) {

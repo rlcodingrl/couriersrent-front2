@@ -7,17 +7,27 @@ import NewsItemRow from "./NewsItemRow";
 
 import { spinnerContext } from "../../../AuthOrApp/AuthOrApp";
 
+
+//redux
+import { setSpinnerFalse, setSpinnerTrue } from "../../../store/spinnerReducer";
+import {useDispatch} from "react-redux";
+
 const AllNews = ({newsCounter}) => {
+  //redux
+  const dispatch = useDispatch()  
 
   const [news, setNews]=useState([])
   const setSpinner = useContext(spinnerContext)
   // console.log(news)
-
+  
   useEffect(()=>{
-    setSpinner(true);
+
+    // setSpinner(true);
+    dispatch(setSpinnerTrue())
     getAllNews().then(res=>{
       setNews(res)
-      setSpinner(false);
+      dispatch(setSpinnerFalse())
+      // setSpinner(false);
     })
     // eslint-disable-next-line
   },[newsCounter])

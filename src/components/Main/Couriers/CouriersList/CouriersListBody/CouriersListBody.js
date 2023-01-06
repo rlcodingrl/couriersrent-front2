@@ -11,13 +11,17 @@ import { spinnerContext } from "../../../../AuthOrApp/AuthOrApp";
 
 import { courierUpdateContext } from "../../Couriers";
 
-
+//redux
+import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReducer";
+import {useDispatch} from "react-redux";
 
 const CouriersListBody = () => {
+  const dispatch = useDispatch()
+
   // eslint-disable-next-line
   const { courierCounter, setCourierCounter } = useContext(courierUpdateContext)
 
-  const setSpinner = useContext(spinnerContext)
+  // const setSpinner = useContext(spinnerContext)
 
   const [couriersData, setCouriersData] = useState(couriersDataDef);
 
@@ -28,10 +32,13 @@ const CouriersListBody = () => {
 
   // eslint-disable-next-line
   useEffect(() => {
-    setSpinner(true)
+    
+    dispatch(setSpinnerTrue())
+    // setSpinner(true)
     getCouriers(courierStatus, user).then(res=>{
       setCouriersData(res);
-      setSpinner(false)
+      dispatch(setSpinnerFalse());
+      // setSpinner(false)
     });
   // eslint-disable-next-line
   }, [user, courierStatus,courierCounter]);

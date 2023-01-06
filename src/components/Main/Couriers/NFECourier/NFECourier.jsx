@@ -6,7 +6,7 @@ import "./NFECourier.css";
 
 //contexts
 import { courierUpdateContext } from "../Couriers";
-import { spinnerContext } from "../../../AuthOrApp/AuthOrApp";
+// import { spinnerContext } from "../../../AuthOrApp/AuthOrApp";
 import { nFECourierContext } from "../Couriers";
 import { UserContext } from "../../../app/app";
 
@@ -30,7 +30,7 @@ const NFECourier = () => {
   // contexts
   const { nFECourier, setNFECourier } = useContext(nFECourierContext);
   const {setCourierCounter} = useContext(courierUpdateContext)
-  const setSpinner = useContext(spinnerContext);
+
   const {user}=useContext(UserContext)
   // state
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
@@ -43,10 +43,8 @@ const NFECourier = () => {
     
 
     if (nFECourier.active==='fullInfo') {
-      // setSpinner(true);
       dispatch(setSpinnerTrue())
       getCourier(null, user, nFECourier.courierId).then(res => {
-        // setSpinner(false);
         dispatch(setSpinnerFalse())
         // console.log(res)
         setCourierFullInfo(res)
@@ -54,12 +52,15 @@ const NFECourier = () => {
     }
 
     if (nFECourier.active==='edit') {
-      setSpinner(true);
+      dispatch(setSpinnerTrue())
       getCourier(null, user, nFECourier.courierId)
       .then(res => {
-        setSpinner(false);
-        console.log(res)
+        dispatch(setSpinnerFalse())
+        // console.log(res)
         setCourierFullInfo(res)
+        reset()
+      })
+      .then(()=>{
         reset()
       })
   
@@ -78,11 +79,9 @@ const NFECourier = () => {
     // }
   });  
 
-  // console.log(courierFullInfo)
-
   const onSubmit = (data) => {
-    console.log(data);
-    setSpinner(true);
+    // console.log(data);
+    dispatch(setSpinnerTrue())
 
     if ( nFECourier.active==='new' ) {
       createNewUser(data).then(res=>{
@@ -90,33 +89,28 @@ const NFECourier = () => {
           console.log('user created successful')
           setIfCreateSuccessful(true);
           setCourierCounter(prev=>prev+1)
-          reset()   
+          reset()
+          dispatch(setSpinnerFalse())
         }
-    })
+      })
     }
+
     // onSubmit edit
     if ( nFECourier.active==='edit' ) {
-      // console.log(`we need edit ${data}`);
-      // console.log(data)
-      // console.log('this is state')
       editCourier(data, nFECourier.courierId).then(res=>{
-        // console.log(res)
         setIfCreateSuccessful(true);
+        dispatch(setSpinnerFalse());
         setCourierCounter(prev=>prev+1);
-        // reset();
-      })
-      
-      
-    }
-    
+      })   
+    }   
   };
 
   return (
     <div className="nfe-courier" 
           onSubmit={handleSubmit(onSubmit)}
           onChange={()=>{setIfCreateSuccessful(false)}}>
-      <form className="new-courier-form">
 
+      <form className="new-courier-form">
      
         <NFECourierHeader reset={reset}/>
         <NFECourierBody>
@@ -125,6 +119,7 @@ const NFECourier = () => {
           <NFECourier_3clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
           <NFECourier_4clm form={{isValid}} ifCreateSuccessful={ifCreateSuccessful}/>
         </NFECourierBody>
+
       </form>
     </div>
   );

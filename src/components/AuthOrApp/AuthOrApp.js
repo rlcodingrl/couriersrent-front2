@@ -37,7 +37,7 @@ const AuthOrApp = () => {
         ) : (
           <Auth setIfAuthenticated={setIfAuthenticated} />
         )}
-        {spinner ? <Spinner /> : null}
+        {/* {spinner ? <Spinner /> : null} */}
         {spinnerRedux ? <Spinner /> : null}
       </spinnerContext.Provider>
     </>
