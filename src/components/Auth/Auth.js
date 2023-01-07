@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { loginHandler } from "../../services/auth/loginHandler";
-import { UserContext } from "../app/app";
+// import { UserContext } from "../app/app";
 
 //redux
 import { setSpinnerFalse,setSpinnerTrue } from "../../store/spinnerReducer";
@@ -12,7 +12,7 @@ import {useDispatch} from "react-redux";
 import "./Auth.css";
 
 const Auth = () => {
-  let { user, setUser } = useContext(UserContext);
+
   const dispatch = useDispatch()
 
   const [form, setForm] = useState({ login: "", password: "" });
@@ -29,7 +29,7 @@ const Auth = () => {
         onSubmit={async (e) => {
           dispatch(setSpinnerTrue())     
           e.preventDefault();
-          let res = await loginHandler(form, dispatch, setAuthTrue, setUser, setUserDataAction);
+          let res = await loginHandler(form, dispatch, setAuthTrue, setUserDataAction);
           if (res.success) {
             dispatch(setSpinnerFalse())
           }

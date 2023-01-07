@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { NavLink } from "react-router-dom";
-import { UserContext } from "../../app/app";
+
+
+//fedux
+import { useSelector } from "react-redux";
 
 import "./Nav.css";
 
 const Nav = () => {
-  const { user } = useContext(UserContext);
-  // console.log(user.role);
+  const user = useSelector(state=>state.user)
+
 
   return (
     <div className="nav">
