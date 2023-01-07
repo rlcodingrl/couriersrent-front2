@@ -16,6 +16,8 @@ export const UserContext = React.createContext({});
 function App() {
   const [user, setUser] = useState({ jwt: localStorage.getItem("jwt") });
 
+  
+
   return (
     <Provider store={store}>
       <UserContext.Provider

@@ -4,7 +4,7 @@ const SET_AUTH_TRUE = "SET_AUTH_TRUE";
 const SET_AUTH_FALSE = "SET_AUTH_FALSE";
 
 export const ifAuthReducer = (state = defaultState, action) => {
-    console.log('ifAuthReducer')
+    // console.log('ifAuthReducer')
     switch (action.type) {
       case SET_AUTH_TRUE:
         return true 

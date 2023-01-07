@@ -5,8 +5,8 @@ export const loginHandler = async (
   { login, password },
   dispatch,
   setAuthTrue,
-  user,
-  setUser
+  setUser,
+  setUserDataAction
 ) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -33,7 +33,9 @@ export const loginHandler = async (
 
         let userData = transformUserData(result);
         // console.log(userData);
+
         setUser(userData);
+        dispatch(setUserDataAction(userData));
         // console.log("login hadnler works");
         localStorage.setItem("jwt", userData.jwt);
         dispatch(setAuthTrue());
