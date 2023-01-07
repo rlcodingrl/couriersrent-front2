@@ -1,7 +1,7 @@
-export const logout = (setUser, setIfAuthenticated) => {
+export const logout = (setUser, dispatch, setAuthFalse) => {
   console.log("logout func work");
   localStorage.setItem("jwt", "");
   console.log(setUser);
   setUser("");
-  setIfAuthenticated(false);
+  dispatch(setAuthFalse());
 };

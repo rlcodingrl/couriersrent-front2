@@ -3,7 +3,8 @@ import { transformUserData } from "./transformUserData";
 
 export const loginHandler = async (
   { login, password },
-  setIfAuthenticated,
+  dispatch,
+  setAuthTrue,
   user,
   setUser
 ) => {
@@ -35,7 +36,7 @@ export const loginHandler = async (
         setUser(userData);
         // console.log("login hadnler works");
         localStorage.setItem("jwt", userData.jwt);
-        setIfAuthenticated(true);
+        dispatch(setAuthTrue());
       }
       return result;
     })

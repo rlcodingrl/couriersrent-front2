@@ -1,7 +1,7 @@
 import { back } from "../../config/config";
 import { transformUserData } from "./transformUserData";
 
-export const ifValidJwtFunc = async (jwt, setIfValidJwtRes, setUser) => {
+export const ifValidJwtFunc = async (jwt, dispatch, setAuthTrue, setUser) => {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${jwt}`);
 
@@ -18,7 +18,7 @@ export const ifValidJwtFunc = async (jwt, setIfValidJwtRes, setUser) => {
       if (result.success === true) {
         let userData = transformUserData(result);
         setUser(userData);
-        setIfValidJwtRes(true);
+        dispatch(setAuthTrue());
         return true;
       }
       return result;

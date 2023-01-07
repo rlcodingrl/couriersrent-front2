@@ -17,7 +17,8 @@ import editCourier from "../../../../services/editCourier";
 import NFECourierHeader from "./NFECourierHeader";
 import NFECourierBody from "./NFECourierBody";
 //redux
-import { setSpinnerFalse, setSpinnerTrue } from "../../../store/spinnerReducer";
+import { setSpinnerFalse,setSpinnerTrue } from "../../../../store/spinnerReducer";
+import { setAuthFalse, setAuthTrue } from "../../../../store/ifAuthReducer";
 import {useDispatch} from "react-redux";
 
 import NFECourier_1clm from "./NFECourierBody/NFECourier_1clm";
@@ -41,6 +42,8 @@ const NFECourier = () => {
   useEffect(()=>{
 
     if (nFECourier.active==='fullInfo') {
+      dispatch(setAuthTrue())
+      console.log('this is auth true fullInfo')
       dispatch(setSpinnerTrue())
       getCourier(null, user, nFECourier.courierId).then(res => {
         dispatch(setSpinnerFalse())

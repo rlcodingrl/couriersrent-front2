@@ -10,7 +10,10 @@ import { UserContext } from "../../../../app/app";
 import { courierUpdateContext } from "../../Couriers";
 
 //redux
-import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReducer";
+import { setSpinnerFalse, setSpinnerTrue} from "../../../../../store/spinnerReducer";
+import { setAuthFalse, setAuthTrue } from "../../../../../store/ifAuthReducer";
+// import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReducer";
+// import { setAuthFalse, setAuthTrue } from "../../../../../store/ifAuthReducer";
 import {useDispatch} from "react-redux";
 
 const CouriersListBody = () => {
@@ -31,6 +34,8 @@ const CouriersListBody = () => {
   useEffect(() => {
     
     dispatch(setSpinnerTrue())
+    dispatch(setAuthTrue())
+    console.log('roman')
     // setSpinner(true)
     getCouriers(courierStatus, user).then(res=>{
       setCouriersData(res);

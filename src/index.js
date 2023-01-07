@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/app";
 import "./index.css";
-// import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -12,6 +11,6 @@ root.render(
     <Router>
       <App />
     </Router>
-  // </React.StrictMode>
+  // {/* </React.StrictMode> */}
 );
 // reportWebVitals();

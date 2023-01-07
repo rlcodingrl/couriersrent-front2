@@ -6,7 +6,8 @@ import getAllNews from "../../../../services/news/getAllNews";
 import NewsItemRow from "./NewsItemRow";
 
 //redux
-import { setSpinnerFalse, setSpinnerTrue } from "../../../store/spinnerReducer";
+import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReducer";
+// import { setSpinnerFalse, setSpinnerTrue } from "../../../store/spinnerReducer";
 import {useDispatch} from "react-redux";
 
 const AllNews = ({newsCounter}) => {

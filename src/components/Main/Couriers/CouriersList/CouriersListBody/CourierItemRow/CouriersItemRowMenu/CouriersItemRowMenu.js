@@ -14,7 +14,8 @@ import deleteCourier from "../../../../../../../services/deleteCourier";
 
 //redux
 // eslint-disable-next-line
-import { setSpinnerFalse, setSpinnerTrue } from "../../../../../../store/spinnerReducer";
+import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinnerReducer";
+// import { setSpinnerFalse, setSpinnerTrue } from "../../../../../../store/spinnerReducer";
 import {useDispatch} from "react-redux";
 
 const CourierItemRowMenu = ({courierId}) => {
