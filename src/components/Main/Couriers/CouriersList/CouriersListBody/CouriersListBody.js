@@ -6,15 +6,12 @@ import "./CouriersListBody.css";
 import getCouriers from "../../../../../services/getCouriers";
 import couriersDataDef from "../../../../../data/couriersDataDef";
 import { StatusContext } from "../../Couriers";
-import { UserContext } from "../../../../app/app";
 import { courierUpdateContext } from "../../Couriers";
 
 //redux
 import { setSpinnerFalse, setSpinnerTrue} from "../../../../../store/spinnerReducer";
 import { setAuthFalse, setAuthTrue } from "../../../../../store/ifAuthReducer";
-// import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReducer";
-// import { setAuthFalse, setAuthTrue } from "../../../../../store/ifAuthReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 
 const CouriersListBody = () => {
   const dispatch = useDispatch()
@@ -26,8 +23,7 @@ const CouriersListBody = () => {
   const [couriersData, setCouriersData] = useState(couriersDataDef);
 
   // eslint-disable-next-line
-  let { user, setUser } = useContext(UserContext);
-
+  const user = useSelector(state=>state.user)
   const courierStatus = useContext(StatusContext);
 
   // eslint-disable-next-line
@@ -35,12 +31,11 @@ const CouriersListBody = () => {
     
     dispatch(setSpinnerTrue())
     dispatch(setAuthTrue())
-    console.log('roman')
+    // console.log('roman')
     // setSpinner(true)
     getCouriers(courierStatus, user).then(res=>{
       setCouriersData(res);
       dispatch(setSpinnerFalse());
-      // setSpinner(false)
     });
   // eslint-disable-next-line
   }, [user, courierStatus,courierCounter]);

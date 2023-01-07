@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../app/app";
+import React from "react";
+
 import { logout } from "../../../services/auth/logout";
 import { NavLink } from "react-router-dom";
 
@@ -11,8 +11,7 @@ import { clearUserDataAction } from "../../../store/userReducer";
 import "./Profile.css";
 
 const Profile = () => {
-  const { setUser } =
-    useContext(UserContext);
+
   // redux
   const dispatch = useDispatch();
   const user = useSelector(state=>state.user)
@@ -23,7 +22,7 @@ const Profile = () => {
       {user.balance}$ {user.name}{" "}
       <NavLink
         onClick={() => {
-          logout(setUser, dispatch, setAuthFalse, clearUserDataAction);
+          logout(dispatch, setAuthFalse, clearUserDataAction);
           // console.log("works onclick");
         }}
         to="/"

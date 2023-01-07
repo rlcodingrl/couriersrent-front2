@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 
 import { UserContext } from "../../app/app";
+import { useSelector } from "react-redux";
 
 import NewNews from "./NewNews";
 import AllNews from "./AllNews";
@@ -9,10 +10,9 @@ import "./Home.css";
 
 const Home = () => {
 
-  const {user} = useContext(UserContext)
+  const user = useSelector(state=>state.user)
 
   const [newsCounter, setNewsCounter] = useState(0);
-  // console.log(newsCounter)
 
   return (
     <div className="home">
@@ -20,8 +20,7 @@ const Home = () => {
         ?<NewNews setNewsCounter={setNewsCounter}/>
         :null}
       
-      <AllNews newsCounter={newsCounter}/>
-      
+      <AllNews newsCounter={newsCounter}/>    
     </div>
   )
 

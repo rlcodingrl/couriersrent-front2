@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import "./CouriersItemRowMenu.css";
 
 //context
-import { UserContext } from "../../../../../../app/app";
 import { StatusContext } from "../../../../Couriers";
 import { courierUpdateContext } from "../../../../Couriers"; 
 import { nFECourierContext } from "../../../../Couriers";
@@ -16,13 +15,13 @@ import deleteCourier from "../../../../../../../services/deleteCourier";
 // eslint-disable-next-line
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinnerReducer";
 // import { setSpinnerFalse, setSpinnerTrue } from "../../../../../../store/spinnerReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const CourierItemRowMenu = ({courierId}) => {
   //redux
   const dispatch = useDispatch()
 
-  const {user} = useContext(UserContext)
+  const user = useSelector(state=>state.user)
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
   const { setNFECourier } = useContext(nFECourierContext)

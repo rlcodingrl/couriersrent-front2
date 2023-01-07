@@ -7,7 +7,7 @@ import "./NFECourier.css";
 //contexts
 import { courierUpdateContext } from "../Couriers";
 import { nFECourierContext } from "../Couriers";
-import { UserContext } from "../../../app/app";
+
 
 // functions
 import createNewUser from "../../../../services/createNewUser";
@@ -18,8 +18,8 @@ import NFECourierHeader from "./NFECourierHeader";
 import NFECourierBody from "./NFECourierBody";
 //redux
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../store/spinnerReducer";
-import { setAuthFalse, setAuthTrue } from "../../../../store/ifAuthReducer";
-import {useDispatch} from "react-redux";
+import { setAuthTrue } from "../../../../store/ifAuthReducer";
+import {useDispatch, useSelector} from "react-redux";
 
 import NFECourier_1clm from "./NFECourierBody/NFECourier_1clm";
 import NFECourier_2clm from "./NFECourierBody/NFECourier_2clm";
@@ -32,7 +32,8 @@ const NFECourier = () => {
   const { nFECourier, setNFECourier } = useContext(nFECourierContext);
   const {setCourierCounter} = useContext(courierUpdateContext)
 
-  const {user}=useContext(UserContext)
+  const user = useSelector(state=>state.user)
+
   // state
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
   const [courierFullInfo, setCourierFullInfo]=useState({})

@@ -4,12 +4,13 @@ import React, { useContext } from "react";
 import "./CouriersNav.css";
 import AddIcon from "../../../../assets/AddIcon";
 
-import { UserContext } from "../../../app/app";
+import { useSelector } from "react-redux";
+
 import { nFECourierContext } from "../Couriers";
 
 const CouriersNav = () => {
 
-  const {user} = useContext(UserContext)
+  const user = useSelector(state => state.user);
   const {setNFECourier} = useContext(nFECourierContext)
 
   return (
