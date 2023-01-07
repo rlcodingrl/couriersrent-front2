@@ -4,11 +4,13 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 import { spinnerReducer } from "./spinnerReducer";
 import { ifAuthReducer } from "./ifAuthReducer";
 import { userReducer } from "./userReducer";
+import { courierFullInfoReducer } from "./courierFullInfoReducer";
 
 const rootReducer = combineReducers({
     ifAuth: ifAuthReducer,
     spinner : spinnerReducer,
-    user: userReducer
+    user: userReducer,
+    courier: courierFullInfoReducer
 })
 
 

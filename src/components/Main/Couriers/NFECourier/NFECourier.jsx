@@ -19,7 +19,9 @@ import NFECourierBody from "./NFECourierBody";
 //redux
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../store/spinnerReducer";
 import { setAuthTrue } from "../../../../store/ifAuthReducer";
+import { setCourierFullInfoAction } from "../../../../store/courierFullInfoReducer";
 import {useDispatch, useSelector} from "react-redux";
+
 
 import NFECourier_1clm from "./NFECourierBody/NFECourier_1clm";
 import NFECourier_2clm from "./NFECourierBody/NFECourier_2clm";
@@ -32,23 +34,22 @@ const NFECourier = () => {
   const { nFECourier, setNFECourier } = useContext(nFECourierContext);
   const {setCourierCounter} = useContext(courierUpdateContext)
 
-  const user = useSelector(state=>state.user)
-
   // state
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
-  const [courierFullInfo, setCourierFullInfo]=useState({})
+
   //redux
   const dispatch = useDispatch()
+  const user = useSelector(state=>state.user)
+  const courierFullInfo = useSelector(state=>state.courier)
 
   useEffect(()=>{
 
     if (nFECourier.active==='fullInfo') {
       dispatch(setAuthTrue())
-      console.log('this is auth true fullInfo')
       dispatch(setSpinnerTrue())
       getCourier(null, user, nFECourier.courierId).then(res => {
         dispatch(setSpinnerFalse())
-        setCourierFullInfo(res)
+        dispatch(setCourierFullInfoAction(res))
       })
     }
 
@@ -57,7 +58,8 @@ const NFECourier = () => {
       getCourier(null, user, nFECourier.courierId)
       .then(res => {
         dispatch(setSpinnerFalse())
-        setCourierFullInfo(res)
+        dispatch(setCourierFullInfoAction(res))
+
         reset()
       })
       .then(()=>{
