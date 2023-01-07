@@ -16,8 +16,7 @@ const AuthOrApp = () => {
   const spinnerRedux = useSelector(state=>state.spinner)
   const authRedux = useSelector(state=>state.ifAuth)
 
-
-  let { user, setUser, ifAuthenticated, setIfAuthenticated } =
+  let { user, setUser } =
     useContext(UserContext);
 
 
@@ -35,7 +34,7 @@ const AuthOrApp = () => {
           <Main />
         </React.Fragment>
       ) : (
-        <Auth setIfAuthenticated={setIfAuthenticated} />
+        <Auth />
       )}
       {spinnerRedux ? <Spinner /> : null}
     </>
