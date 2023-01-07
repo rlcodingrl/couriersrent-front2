@@ -1,13 +1,13 @@
 import Header from "../Header";
 import Main from "../Main";
 import Auth from "../Auth";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { ifValidJwtFunc } from "../../services/auth/ifValidJwtFunc";
 import Spinner from "../Spinner";
 
 //redux
-import { setAuthFalse, setAuthTrue } from "../../store/ifAuthReducer";
+import { setAuthTrue } from "../../store/ifAuthReducer";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserDataAction } from "../../store/userReducer";
 
