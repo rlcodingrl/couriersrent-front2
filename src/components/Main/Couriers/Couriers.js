@@ -7,7 +7,7 @@ import CouriersList from "./CouriersList/CouriersList";
 import NFECourier from "./NFECourier"
 
 export const StatusContext = React.createContext({});
-export const newCourierContext = React.createContext({});
+
 export const courierUpdateContext = React.createContext({});
 export const nFECourierContext = React.createContext({});
 

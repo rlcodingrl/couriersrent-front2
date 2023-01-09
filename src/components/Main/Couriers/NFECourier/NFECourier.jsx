@@ -7,21 +7,18 @@ import "./NFECourier.css";
 //contexts
 import { courierUpdateContext } from "../Couriers";
 import { nFECourierContext } from "../Couriers";
-
-
 // functions
 import createNewUser from "../../../../services/createNewUser";
 import getCourier from "../../../../services/getCourier";
 import editCourier from "../../../../services/editCourier";
-// components
-import NFECourierHeader from "./NFECourierHeader";
-import NFECourierBody from "./NFECourierBody";
 //redux
+import {useDispatch, useSelector} from "react-redux";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../store/spinnerReducer";
 import { setAuthTrue } from "../../../../store/ifAuthReducer";
 import { setCourierFullInfoAction } from "../../../../store/courierFullInfoReducer";
-import {useDispatch, useSelector} from "react-redux";
-
+// components
+import NFECourierHeader from "./NFECourierHeader";
+import NFECourierBody from "./NFECourierBody";
 
 import NFECourier_1clm from "./NFECourierBody/NFECourier_1clm";
 import NFECourier_2clm from "./NFECourierBody/NFECourier_2clm";
