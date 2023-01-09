@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
 
 import "./NFECourier_2clm.css";
-
-import { nFECourierContext } from "../../../Couriers";
+import { useSelector } from "react-redux";
+// import { nFECourierContext } from "../../../Couriers";
 
 const NFECourier_2clm = ({ form, courierFullInfo }) => {
   const { register, errors } = form;
-
-  const { nFECourier } = useContext(nFECourierContext);
+  const nFECourier = useSelector(state=>state.nFE)
+  // const { nFECourier } = useContext(nFECourierContext);
 
   return (
     <div className="nfe-courier-2-clm nfe-courier-clm">

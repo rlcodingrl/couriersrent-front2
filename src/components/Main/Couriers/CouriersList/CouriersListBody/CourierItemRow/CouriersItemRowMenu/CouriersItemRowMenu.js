@@ -14,8 +14,8 @@ import deleteCourier from "../../../../../../../services/deleteCourier";
 //redux
 // eslint-disable-next-line
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinnerReducer";
-// import { setSpinnerFalse, setSpinnerTrue } from "../../../../../../store/spinnerReducer";
 import {useDispatch, useSelector} from "react-redux";
+import { setFullInfoModeAction, setEditModeAction } from "../../../../../../../store/nFECourierReducer";
 
 const CourierItemRowMenu = ({courierId}) => {
   //redux
@@ -24,39 +24,41 @@ const CourierItemRowMenu = ({courierId}) => {
   const user = useSelector(state=>state.user)
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
-  const { setNFECourier } = useContext(nFECourierContext)
+  // const { setNFECourier } = useContext(nFECourierContext)
 
   return (
     <div className="couriers-item-row-menu">
 
       {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
               ?<div className="couriers-item-row__col def-btn" 
-                    onClick={()=>{setNFECourier({active: 'fullInfo', courierId: courierId});
-                                  // console.log(courierId)
-                                  }}>
+                    onClick={()=>{
+                      // setNFECourier({active: 'fullInfo', courierId: courierId});
+                      dispatch(setFullInfoModeAction(courierId))
+                    }}>
                       Full info
               </div>
               :null
             }
 
       {user.role === 'admin'
-        ?<div className="couriers-item-row__col def-btn"
-              onClick={()=>{
-                console.log(`edit click ${courierId}`)
-                setNFECourier({active: 'edit', courierId: courierId})
-              }}
-                 >Edit
-        </div>:null}
+              ?<div className="couriers-item-row__col def-btn"
+                    onClick={()=>{
+                      // setNFECourier({active: 'edit', courierId: courierId})
+                      dispatch(setEditModeAction(courierId))
+                    }}
+                      >Edit
+              </div>:null}
 
 
       {user.role === 'admin'
-        ?<div className="couriers-item-row__col def-btn" 
-              onClick={()=>{
-                dispatch(setSpinnerTrue())
-                deleteCourier(courierId,setCourierCounter)}}>
-          Delete
-          </div>
-        :null}
+              ?<div className="couriers-item-row__col def-btn" 
+                    onClick={()=>{
+                      dispatch(setSpinnerTrue())
+                      deleteCourier(courierId,setCourierCounter)
+                    }}>
+                        Delete
+                </div>
+              :null}
 
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 

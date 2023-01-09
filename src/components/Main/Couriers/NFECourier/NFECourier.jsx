@@ -6,7 +6,7 @@ import "./NFECourier.css";
 
 //contexts
 import { courierUpdateContext } from "../Couriers";
-import { nFECourierContext } from "../Couriers";
+// import { nFECourierContext } from "../Couriers";
 // functions
 import createNewUser from "../../../../services/createNewUser";
 import getCourier from "../../../../services/getCourier";
@@ -28,7 +28,7 @@ import NFECourier_4clm from "./NFECourierBody/NFECourier_4clm";
 const NFECourier = () => {
   // contexts
   // eslint-disable-next-line
-  const { nFECourier, setNFECourier } = useContext(nFECourierContext);
+  // const { nFECourier, setNFECourier } = useContext(nFECourierContext);
   const {setCourierCounter} = useContext(courierUpdateContext)
 
   // state
@@ -38,11 +38,12 @@ const NFECourier = () => {
   const dispatch = useDispatch()
   const user = useSelector(state=>state.user)
   const courierFullInfo = useSelector(state=>state.courier)
+  const nFECourier = useSelector(state=>state.nFE)
 
   useEffect(()=>{
 
     if (nFECourier.active==='fullInfo') {
-      dispatch(setAuthTrue())
+      // dispatch(setAuthTrue())
       dispatch(setSpinnerTrue())
       getCourier(null, user, nFECourier.courierId).then(res => {
         dispatch(setSpinnerFalse())
@@ -64,6 +65,7 @@ const NFECourier = () => {
       })
   
     }
+    console.log(nFECourier)
   // eslint-disable-next-line
   },[])
 

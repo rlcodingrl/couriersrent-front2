@@ -5,12 +5,14 @@ import { spinnerReducer } from "./spinnerReducer";
 import { ifAuthReducer } from "./ifAuthReducer";
 import { userReducer } from "./userReducer";
 import { courierFullInfoReducer } from "./courierFullInfoReducer";
+import { nFEReducer } from "./nFECourierReducer";
 
 const rootReducer = combineReducers({
     ifAuth: ifAuthReducer,
     spinner : spinnerReducer,
     user: userReducer,
-    courier: courierFullInfoReducer
+    courier: courierFullInfoReducer,
+    nFE: nFEReducer,
 })
 
 
