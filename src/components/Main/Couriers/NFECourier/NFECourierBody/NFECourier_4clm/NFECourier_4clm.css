@@ -15,3 +15,9 @@
     transform: scale(1.1);
 }
 
+.nfe-courier__submit-btn:disabled:hover {
+    background-color: rgb(147, 206, 255);
+    transform: scale(1);
+}
+
+

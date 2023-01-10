@@ -2,7 +2,7 @@ import { back } from "../config/config";
 
 const getCourier = async (courierStatus, user, id = 'none') => {
 
-    const jwt = localStorage.getItem('jwt')  
+    const jwt = localStorage.getItem('jwt')
 
     if (courierStatus === "reserved") {
       courierStatus = "res";

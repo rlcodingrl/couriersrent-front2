@@ -21,14 +21,12 @@ const Couriers = ({status}) => {
   const nFECourier = useSelector(state=>state.nFE)
 
   const [courierStatus]=useState(status)
-  // const [nFECourier, setNFECourier]=useState({active: false, courierId: ''})
   const [courierCounter, setCourierCounter] = useState(0);
 
   return (
 
     <StatusContext.Provider value={courierStatus}>
     <courierUpdateContext.Provider value={ {courierCounter, setCourierCounter} }>
-    {/* <nFECourierContext.Provider value={{nFECourier, setNFECourier}}> */}
     
       <div className="couriers">
        
@@ -39,7 +37,6 @@ const Couriers = ({status}) => {
 
       {(nFECourier.active)&&<NFECourier/>}
 
-    {/* </nFECourierContext.Provider> */}
     </courierUpdateContext.Provider>
     </StatusContext.Provider>
   );

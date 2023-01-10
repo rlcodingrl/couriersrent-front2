@@ -5,8 +5,6 @@ import "./CouriersItemRowMenu.css";
 //context
 import { StatusContext } from "../../../../Couriers";
 import { courierUpdateContext } from "../../../../Couriers"; 
-import { nFECourierContext } from "../../../../Couriers";
-
 
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 import deleteCourier from "../../../../../../../services/deleteCourier";
@@ -24,7 +22,6 @@ const CourierItemRowMenu = ({courierId}) => {
   const user = useSelector(state=>state.user)
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
-  // const { setNFECourier } = useContext(nFECourierContext)
 
   return (
     <div className="couriers-item-row-menu">
@@ -32,7 +29,6 @@ const CourierItemRowMenu = ({courierId}) => {
       {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
               ?<div className="couriers-item-row__col def-btn" 
                     onClick={()=>{
-                      // setNFECourier({active: 'fullInfo', courierId: courierId});
                       dispatch(setFullInfoModeAction(courierId))
                     }}>
                       Full info
@@ -43,7 +39,6 @@ const CourierItemRowMenu = ({courierId}) => {
       {user.role === 'admin'
               ?<div className="couriers-item-row__col def-btn"
                     onClick={()=>{
-                      // setNFECourier({active: 'edit', courierId: courierId})
                       dispatch(setEditModeAction(courierId))
                     }}
                       >Edit

@@ -18,8 +18,6 @@ const AllNews = ({newsCounter}) => {
   // const setSpinner = useContext(spinnerContext)
   
   useEffect(()=>{
-
-
     dispatch(setSpinnerTrue())
     getAllNews().then(res=>{
       setNews(res)
@@ -31,7 +29,6 @@ const AllNews = ({newsCounter}) => {
   return (
     <div className="all-news">
       {news.map((el) => <NewsItemRow news={el} key={el._id} />)}
-
     </div>
   )
 

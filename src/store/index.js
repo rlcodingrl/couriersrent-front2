@@ -6,6 +6,7 @@ import { ifAuthReducer } from "./ifAuthReducer";
 import { userReducer } from "./userReducer";
 import { courierFullInfoReducer } from "./courierFullInfoReducer";
 import { nFEReducer } from "./nFECourierReducer";
+import { usersListReducer } from "./usersListReducer";
 
 const rootReducer = combineReducers({
     ifAuth: ifAuthReducer,
@@ -13,10 +14,11 @@ const rootReducer = combineReducers({
     user: userReducer,
     courier: courierFullInfoReducer,
     nFE: nFEReducer,
+    usersList: usersListReducer
 })
 
 
 
 export const store = createStore(rootReducer, composeWithDevTools())
 
-console.log(store.getState())
+// console.log(store.getState())

@@ -28,7 +28,6 @@ import NFECourier_4clm from "./NFECourierBody/NFECourier_4clm";
 const NFECourier = () => {
   // contexts
   // eslint-disable-next-line
-  // const { nFECourier, setNFECourier } = useContext(nFECourierContext);
   const {setCourierCounter} = useContext(courierUpdateContext)
 
   // state
@@ -43,7 +42,6 @@ const NFECourier = () => {
   useEffect(()=>{
 
     if (nFECourier.active==='fullInfo') {
-      // dispatch(setAuthTrue())
       dispatch(setSpinnerTrue())
       getCourier(null, user, nFECourier.courierId).then(res => {
         dispatch(setSpinnerFalse())
