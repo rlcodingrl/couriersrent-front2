@@ -1,5 +1,33 @@
+.news-item-row {
+    display: flex;
+    padding-bottom: 5px;
+}
+
 .news-item-row__author {
     font-size: 14px;
     color: rgb(62, 97, 97);
     text-align: right;
+}
+
+.news-item-row__author-and-text {
+    flex-grow: 1;
+}
+
+.delete-btn {
+    display: flex;
+    background-color: crimson;
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
+}
+
+.news-item-row__delete-wrapper {
+    padding-left: 15px;
+}
+
+.news-item-row__delete-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

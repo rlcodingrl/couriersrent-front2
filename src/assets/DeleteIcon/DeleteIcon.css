@@ -1,0 +1,10 @@
+.delete-btn {
+    transition: 0.3s;
+    background-color: rgb(216, 83, 110);
+}
+
+.delete-btn:hover {
+    background-color: rgb(175, 14, 47);
+    transform: scale(1.1);
+}
+

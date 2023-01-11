@@ -8,16 +8,24 @@ import NewsItemRow from "./NewsItemRow";
 //redux
 import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReducer";
 // import { setSpinnerFalse, setSpinnerTrue } from "../../../store/spinnerReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+
 
 const AllNews = ({newsCounter}) => {
+  
+
   //redux
   const dispatch = useDispatch()  
+  const user = useSelector(state=>state.user)
+
 
   const [news, setNews]=useState([])
-  // const setSpinner = useContext(spinnerContext)
+  const [trashIcon, setTrashIcon] = useState(false)
+
+  
   
   useEffect(()=>{
+    if (user.role === 'admin') { setTrashIcon(true) }
     dispatch(setSpinnerTrue())
     getAllNews().then(res=>{
       setNews(res)
@@ -28,7 +36,7 @@ const AllNews = ({newsCounter}) => {
 
   return (
     <div className="all-news">
-      {news.map((el) => <NewsItemRow news={el} key={el._id} />)}
+      {news.map((el) => <NewsItemRow news={el} key={el._id} trashIcon={trashIcon}/>)}
     </div>
   )
 
