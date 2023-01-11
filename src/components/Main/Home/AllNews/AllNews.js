@@ -11,7 +11,7 @@ import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReduce
 import {useDispatch, useSelector} from "react-redux";
 
 
-const AllNews = ({newsCounter}) => {
+const AllNews = ({newsCounter, setNewsCounter}) => {
   
 
   //redux
@@ -36,7 +36,7 @@ const AllNews = ({newsCounter}) => {
 
   return (
     <div className="all-news">
-      {news.map((el) => <NewsItemRow news={el} key={el._id} trashIcon={trashIcon}/>)}
+      {news&&news.map((el) => <NewsItemRow news={el} key={el._id} trashIcon={trashIcon} setNewsCounter={setNewsCounter}/>)}
     </div>
   )
 

@@ -20,7 +20,7 @@ const Home = () => {
         ?<NewNews setNewsCounter={setNewsCounter}/>
         :null}
       
-      <AllNews newsCounter={newsCounter}/>    
+      <AllNews newsCounter={newsCounter} setNewsCounter={setNewsCounter}/>    
     </div>
   )
 
