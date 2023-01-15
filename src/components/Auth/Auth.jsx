@@ -12,16 +12,20 @@ import "./Auth.css";
 
 const Auth = () => {
 
+
   const dispatch = useDispatch()
 
   const [form, setForm] = useState({ login: "", password: "" });
+  const [ showInvPass, setShowInvPass ] = useState(false);
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
+    setShowInvPass(false)
   };
 
   return (
     <div className="auth">
+      <div className="auth-inner-wrapper">
       <h1>Couriers rent service</h1>
       <form
         action=""
@@ -29,12 +33,18 @@ const Auth = () => {
           dispatch(setSpinnerTrue())     
           e.preventDefault();
           let res = await loginHandler(form, dispatch, setAuthTrue, setUserDataAction);
+          console.log(res)
           if (res.success) {
             dispatch(setSpinnerFalse())
           }
+          if (res.message==='Invalid username or password'||res.message==='User not found') {
+            setShowInvPass(true)
+            dispatch(setSpinnerFalse())
+          }
+          
         }}
       >
-        <div>
+        <div className="auth-first-row">
           <span>login</span>
           <input
             name="login"
@@ -45,7 +55,7 @@ const Auth = () => {
             value={form.login}
           ></input>
         </div>
-        <div>
+        <div className="auth-second-row">
           <span>password</span>
           <input
             name="password"
@@ -56,9 +66,17 @@ const Auth = () => {
             onChange={changeHandler}
           ></input>
         </div>
-        <button type="submit">Login</button>
+        <div className="auth-third-row">
+          <div>
+           {showInvPass&&<span>Invalid username or password</span>}
+          </div>
+          <button type="submit">Login</button>
+        </div>
+        
       </form>
       {/* {error ? "ошибка" : ""} */}
+      </div>
+      
     </div>
   );
 };

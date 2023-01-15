@@ -1,0 +1,28 @@
+.auth-inner-wrapper {
+    width: 330px;
+    margin: 0 auto;
+}
+
+.auth-first-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.auth-second-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.auth-inner-wrapper input {
+    width: 240px;
+}
+
+.auth-third-row {
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    color: red;
+}
