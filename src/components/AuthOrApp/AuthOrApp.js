@@ -1,7 +1,11 @@
+import React, { useEffect } from "react";
+
+// components
 import Header from "../Header";
 import Main from "../Main";
 import Auth from "../Auth";
-import React, { useEffect } from "react";
+import Modal from "../Modal";
+
 
 import { ifValidJwtFunc } from "../../services/auth/ifValidJwtFunc";
 import Spinner from "../Spinner";
@@ -17,10 +21,10 @@ const AuthOrApp = () => {
   const spinnerRedux = useSelector(state=>state.spinner)
   const authRedux = useSelector(state=>state.ifAuth)
   const user = useSelector(state=>state.user)
+  const modalRedux = useSelector(state=>state.modal)
 
   useEffect(() => {
     ifValidJwtFunc(user.jwt, dispatch, setAuthTrue, setUserDataAction);
-    // eslint-disable-next-line
   }, []);
 
 
@@ -35,6 +39,8 @@ const AuthOrApp = () => {
         <Auth />
       )}
       {spinnerRedux ? <Spinner /> : null}
+      {modalRedux ? <Modal /> : null}
+      
     </>
   );
 };

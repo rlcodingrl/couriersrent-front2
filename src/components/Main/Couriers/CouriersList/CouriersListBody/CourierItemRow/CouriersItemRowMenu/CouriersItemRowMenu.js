@@ -14,15 +14,23 @@ import deleteCourier from "../../../../../../../services/deleteCourier";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinnerReducer";
 import {useDispatch, useSelector} from "react-redux";
 import { setFullInfoModeAction, setEditModeAction } from "../../../../../../../store/nFECourierReducer";
+import { setModalTrue } from "../../../../../../../store/modalReducer";
 
 const CourierItemRowMenu = ({courierId}) => {
   //redux
   const dispatch = useDispatch()
-
+  
   const user = useSelector(state=>state.user)
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
 
+  
+  //handlers
+  const onReserveHandler = () => {
+    
+  }
+
+  
   return (
     <div className="couriers-item-row-menu">
 
@@ -58,11 +66,18 @@ const CourierItemRowMenu = ({courierId}) => {
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{
+                dispatch(setModalTrue())
+                
+                if (true) {
+                  return
+                }
                 dispatch(setSpinnerTrue())
                 changeCourierStatus(courierId,user.name,setCourierCounter).then(res=> {
                   if (!res) {
                 }})
-                }}>
+                }}
+                
+                >
                 Reserve
          </div>
         :null}

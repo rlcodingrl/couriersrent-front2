@@ -7,10 +7,12 @@ import { userReducer } from "./userReducer";
 import { courierFullInfoReducer } from "./courierFullInfoReducer";
 import { nFEReducer } from "./nFECourierReducer";
 import { usersListReducer } from "./usersListReducer";
+import { modalReducer } from "./modalReducer";
 
 const rootReducer = combineReducers({
     ifAuth: ifAuthReducer,
     spinner : spinnerReducer,
+    modal : modalReducer,
     user: userReducer,
     courier: courierFullInfoReducer,
     nFE: nFEReducer,
