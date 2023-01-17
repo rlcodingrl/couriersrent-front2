@@ -13,12 +13,20 @@ const getUsers = async () => {
     };
 
     let res = await fetch(`${back}/users`, requestOptions)
-        .then(response => response.json())
+        .then(response => {
+            if(!response.ok) {
+                throw Error('server response !ok ')
+            }
+            return response.json()
+        })
         .then(result => {
-            console.log(result)
             return result
         })
-        .catch(error => console.log('error', error));
+        .catch(error => {
+            console.log('this is catch error')
+            console.log('error', error)
+            alert('error', error)
+        });
     
     return res
 }

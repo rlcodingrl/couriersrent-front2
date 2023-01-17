@@ -16,14 +16,16 @@ const deleteCourier = (courierId, funcToUpdateCourierList) => {
     redirect: "follow",
   };
 
-  fetch(
-    `${back}/couriers/${courierId}`,
-    requestOptions
-  )
-    .then((response) => response.text())
+  fetch(`${back}/couriers/${courierId}`, requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("server response !ok ");
+      }
+      return response.json();
+    })
     .then((result) => {
-        console.log(result);
-        funcToUpdateCourierList(prev=>prev+1)
+      console.log(result);
+      funcToUpdateCourierList((prev) => prev + 1);
     })
     .catch((error) => console.log("error", error));
 };

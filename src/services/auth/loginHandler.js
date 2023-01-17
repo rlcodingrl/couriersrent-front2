@@ -23,7 +23,12 @@ export const loginHandler = async (
   };
 
   let res = await fetch(`${back}/auth/login`, requestOptions)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("server response !ok ");
+      }
+      return response.json();
+    })
     .then((result) => {
       if (result.user) {
         // console.log(result);

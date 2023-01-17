@@ -21,14 +21,19 @@ const postNewNews = (data) => {''
   };
 
   const resFunc = fetch(`${back}/news`, requestOptions)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("server response !ok ");
+      }
+      return response.json();
+    })
     .then((result) => {
-      console.log(result)
-      return result
+      console.log(result);
+      return result;
     })
     .catch((error) => console.log("error", error));
 
-    return resFunc
+  return resFunc;
 
 };
 

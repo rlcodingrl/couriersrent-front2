@@ -13,7 +13,12 @@ const deleteNews = async (id) => {
     };
 
     let funcRes = fetch(`${back}/news/${id}`, requestOptions)
-    .then(response => response.json())
+    .then(response => {
+        if(!response.ok) {
+            throw Error('server response !ok ')
+        }
+        return response.json()
+    })
     .then(
         result => {
             console.log(result)

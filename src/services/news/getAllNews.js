@@ -14,13 +14,18 @@ const getAllNews = async () => {
   };
 
   let funcRes = await fetch(`${back}/news/all`, requestOptions)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("server response !ok ");
+      }
+      return response.json();
+    })
     .then((result) => {
-      return result.data.news.reverse()
+      return result.data.news.reverse();
     })
     .catch((error) => console.log("error", error));
-  
-  return funcRes
+
+  return funcRes;
   
 };
 

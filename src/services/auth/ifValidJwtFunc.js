@@ -12,12 +12,17 @@ export const ifValidJwtFunc = async (jwt, dispatch, setAuthTrue, setUserDataActi
   };
 
   let res = await fetch(`${back}/user/me`, requestOptions)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("server response !ok ");
+      }
+      return response.json();
+    })
     .then((result) => {
       // console.log(result);
       if (result.success === true) {
         let userData = transformUserData(result);
-        dispatch(setUserDataAction(userData))
+        dispatch(setUserDataAction(userData));
         // setUser(userData);
         dispatch(setAuthTrue());
         return true;

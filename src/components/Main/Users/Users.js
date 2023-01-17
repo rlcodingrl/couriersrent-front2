@@ -16,7 +16,7 @@ const Users = () => {
   const dispatch = useDispatch()
   
   const usersList = useSelector(state => state.usersList)
-  console.log(usersList)
+  // console.log(usersList)
 
   useEffect(()=>{
     dispatch(setSpinnerTrue())

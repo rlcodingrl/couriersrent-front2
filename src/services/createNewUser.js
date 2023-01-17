@@ -41,11 +41,13 @@ const createNewUser = (data) => {
     redirect: "follow",
   };
 
-  const resThisFunc = fetch(
-    `${back}/couriers`,
-    requestOptions
-  )
-    .then((response) => response.json())
+  const resThisFunc = fetch(`${back}/couriers`, requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("server response !ok ");
+      }
+      return response.json();
+    })
     .then((result) => {
       return result;
     })

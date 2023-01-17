@@ -38,11 +38,17 @@ const editCourier = (data, courierId) => {
     };
     
     const resFunc = fetch(`${back}/couriers/${courierId}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-        return result})
-      .catch(error => console.log('error', error));
+      .then((response) => {
+        if (!response.ok) {
+          throw Error("server response !ok ");
+        }
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .catch((error) => console.log("error", error));
 
   return resFunc
 };

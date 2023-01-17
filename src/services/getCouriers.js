@@ -38,12 +38,17 @@ const getCouriers = async (courierStatus, user) => {
 
 
   const resThisFunc = fetch(path, requestOptions)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("server response !ok ");
+      }
+      return response.json();
+    })
     .then((result) => {
-    //   console.log(result)
-    //   console.log(result.data.couriers);
-    //   if (id !== 'none') { setCouriersData(result.data); return }
-      return filterCouriers(result.data.couriers)
+      //   console.log(result)
+      //   console.log(result.data.couriers);
+      //   if (id !== 'none') { setCouriersData(result.data); return }
+      return filterCouriers(result.data.couriers);
       // setCouriersData(filterCouriers(result.data.couriers));
     })
     .catch((error) => console.log("error", error));
