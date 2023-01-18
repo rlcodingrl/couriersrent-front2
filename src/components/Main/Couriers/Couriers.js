@@ -10,26 +10,20 @@ import NFECourier from "./NFECourier"
 
 export const StatusContext = React.createContext({});
 
-export const courierUpdateContext = React.createContext({});
-// export const nFECourierContext = React.createContext({});
-
-// redux
-
 
 const Couriers = ({status}) => {
-
+  // redux
   const nFECourier = useSelector(state=>state.nFE)
-
+  // state
   const [courierStatus]=useState(status)
-  const [courierCounter, setCourierCounter] = useState(0);
+
 
   return (
 
     <StatusContext.Provider value={courierStatus}>
-    <courierUpdateContext.Provider value={ {courierCounter, setCourierCounter} }>
     
       <div className="couriers">
-       
+    
         <CouriersNav />
         <CouriersList />
 
@@ -37,7 +31,6 @@ const Couriers = ({status}) => {
 
       {(nFECourier.active)&&<NFECourier/>}
 
-    </courierUpdateContext.Provider>
     </StatusContext.Provider>
   );
 };

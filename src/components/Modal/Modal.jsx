@@ -9,7 +9,6 @@ import { setModalFalse } from "../../store/modalReducer";
 import { setSpinnerTrue } from "../../store/spinnerReducer";
 
 //services
-import changeCourierStatus from "../../services/changeCourierStatus";
 
 // onClickHandlers
 import onClickReserveHandler from "../../services/onClickHandlers/onClickReserveHandler";
@@ -21,7 +20,7 @@ const Modal = () => {
   const user = useSelector(state=>state.user)
 
   let onClickYes;
-  if (modalAction==='reserve') { onClickYes = ()=>{onClickReserveHandler(dispatch,setSpinnerTrue,changeCourierStatus,courierId,user,) } }
+  if (modalAction==='reserve') { onClickYes = ()=>{onClickReserveHandler(dispatch,courierId,user) } }
 
   return (
     <div className="modal" onClick={()=>{dispatch(setModalFalse())}}>

@@ -1,6 +1,6 @@
 import { back } from "../config/config";
 
-const deleteCourier = (courierId, funcToUpdateCourierList) => {
+const deleteCourier = (courierId, dispatch, funcToUpdateCourierList) => {
 
     const jwt = localStorage.getItem('jwt')  
 
@@ -25,7 +25,7 @@ const deleteCourier = (courierId, funcToUpdateCourierList) => {
     })
     .then((result) => {
       console.log(result);
-      funcToUpdateCourierList((prev) => prev + 1);
+      dispatch(funcToUpdateCourierList());
     })
     .catch((error) => console.log("error", error));
 };

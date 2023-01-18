@@ -4,7 +4,7 @@ import "./CouriersItemRowMenu.css";
 
 //context
 import { StatusContext } from "../../../../Couriers";
-import { courierUpdateContext } from "../../../../Couriers"; 
+
 
 //services
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
@@ -24,7 +24,7 @@ const CourierItemRowMenu = ({courierId}) => {
   const user = useSelector(state=>state.user)
   //context
   const courierStatus=useContext(StatusContext)
-  const { setCourierCounter } = useContext(courierUpdateContext)
+
 
   
   //handlers
@@ -59,7 +59,7 @@ const CourierItemRowMenu = ({courierId}) => {
               ?<div className="couriers-item-row__col def-btn" 
                     onClick={()=>{
                       dispatch(setSpinnerTrue())
-                      deleteCourier(courierId,setCourierCounter)
+                      deleteCourier(courierId,dispatch, setCourierCounterRedux)
                     }}>
                         Delete
                 </div>
@@ -75,7 +75,7 @@ const CourierItemRowMenu = ({courierId}) => {
                 }
 
                 dispatch(setSpinnerTrue())
-                changeCourierStatus(courierId,user.name,setCourierCounter).then(res=> {
+                changeCourierStatus(courierId,user.name, dispatch, setCourierCounterRedux).then(res=> {
                   if (!res) {
                 }})
 
@@ -93,7 +93,7 @@ const CourierItemRowMenu = ({courierId}) => {
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{
                 dispatch(setSpinnerTrue())
-                changeCourierStatus(courierId,'Free',setCourierCounter).then(res=> {
+                changeCourierStatus(courierId,'Free', dispatch, setCourierCounterRedux).then(res=> {
                   console.log(res);
                   if (!res) {
                 

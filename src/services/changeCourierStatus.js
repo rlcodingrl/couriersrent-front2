@@ -1,6 +1,6 @@
 import { back } from "../config/config";
 
-const changeCourierStatus = async (courierId, newStatus, funcToUpdateCourierList) => {
+const changeCourierStatus = async (courierId, newStatus, dispatch, funcToUpdateCourierList) => {
   console.log('changeCourierStatus works')
   const token = localStorage.getItem('jwt')
 
@@ -31,7 +31,7 @@ const changeCourierStatus = async (courierId, newStatus, funcToUpdateCourierList
     })
     .then((result) => {
       // console.log(result)
-      funcToUpdateCourierList((prev) => prev + 1);
+      dispatch(funcToUpdateCourierList());
       console.log("func changeCouriersStatus finished");
       return result.status;
     })

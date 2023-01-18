@@ -16,6 +16,8 @@ import {useDispatch, useSelector} from "react-redux";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../store/spinnerReducer";
 import { setAuthTrue } from "../../../../store/ifAuthReducer";
 import { setCourierFullInfoAction } from "../../../../store/courierFullInfoReducer";
+import { setCourierCounterRedux } from "../../../../store/courierCounterReducer";
+
 // components
 import NFECourierHeader from "./NFECourierHeader";
 import NFECourierBody from "./NFECourierBody";
@@ -28,7 +30,7 @@ import NFECourier_4clm from "./NFECourierBody/NFECourier_4clm";
 const NFECourier = () => {
   // contexts
   // eslint-disable-next-line
-  const {setCourierCounter} = useContext(courierUpdateContext)
+
 
   // state
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
@@ -38,6 +40,7 @@ const NFECourier = () => {
   const user = useSelector(state=>state.user)
   const courierFullInfo = useSelector(state=>state.courier)
   const nFECourier = useSelector(state=>state.nFE)
+
 
   useEffect(()=>{
 
@@ -87,7 +90,7 @@ const NFECourier = () => {
         if (res.status===true) { 
           console.log('user created successful')
           setIfCreateSuccessful(true);
-          setCourierCounter(prev=>prev+1)
+          dispatch(setCourierCounterRedux())
           reset()
           dispatch(setSpinnerFalse())
         }
@@ -99,7 +102,7 @@ const NFECourier = () => {
       editCourier(data, nFECourier.courierId).then(res=>{
         setIfCreateSuccessful(true);
         dispatch(setSpinnerFalse());
-        setCourierCounter(prev=>prev+1);
+        dispatch(setCourierCounterRedux())
       })   
     }   
   };
