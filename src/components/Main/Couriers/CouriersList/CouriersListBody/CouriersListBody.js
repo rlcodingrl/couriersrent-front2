@@ -13,12 +13,15 @@ import { setSpinnerFalse, setSpinnerTrue} from "../../../../../store/spinnerRedu
 import { setAuthFalse, setAuthTrue } from "../../../../../store/ifAuthReducer";
 import {useDispatch, useSelector } from "react-redux";
 
+
 const CouriersListBody = () => {
   const dispatch = useDispatch()
 
+  // redux
+  const courierCounterRedux = useSelector(state=>state.courierCounterReducer)
+
   // eslint-disable-next-line
   const { courierCounter, setCourierCounter } = useContext(courierUpdateContext)
-
 
   const [couriersData, setCouriersData] = useState(couriersDataDef);
 
@@ -38,7 +41,7 @@ const CouriersListBody = () => {
       dispatch(setSpinnerFalse());
     });
   // eslint-disable-next-line
-  }, [user, courierStatus,courierCounter]);
+  }, [user, courierStatus,courierCounter,courierCounterRedux]);
 
   return (
 

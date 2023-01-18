@@ -6,6 +6,7 @@ import "./CouriersItemRowMenu.css";
 import { StatusContext } from "../../../../Couriers";
 import { courierUpdateContext } from "../../../../Couriers"; 
 
+//services
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 import deleteCourier from "../../../../../../../services/deleteCourier";
 
@@ -14,20 +15,21 @@ import deleteCourier from "../../../../../../../services/deleteCourier";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinnerReducer";
 import {useDispatch, useSelector} from "react-redux";
 import { setFullInfoModeAction, setEditModeAction } from "../../../../../../../store/nFECourierReducer";
-import { setModalTrue } from "../../../../../../../store/modalReducer";
+import { setModalReserve } from "../../../../../../../store/modalReducer";
+import { setCourierCounterRedux } from "../../../../../../../store/courierCounterReducer";
 
 const CourierItemRowMenu = ({courierId}) => {
   //redux
   const dispatch = useDispatch()
-  
   const user = useSelector(state=>state.user)
+  //context
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
 
   
   //handlers
-  const onReserveHandler = () => {
-    
+  const onClickReserveHandler = () => {
+
   }
 
   
@@ -66,15 +68,20 @@ const CourierItemRowMenu = ({courierId}) => {
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{
-                dispatch(setModalTrue())
-                
+                dispatch(setModalReserve(courierId))
+
                 if (true) {
                   return
                 }
+
                 dispatch(setSpinnerTrue())
                 changeCourierStatus(courierId,user.name,setCourierCounter).then(res=> {
                   if (!res) {
                 }})
+
+                
+
+
                 }}
                 
                 >
