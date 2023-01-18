@@ -15,7 +15,7 @@ import deleteCourier from "../../../../../../../services/deleteCourier";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinnerReducer";
 import {useDispatch, useSelector} from "react-redux";
 import { setFullInfoModeAction, setEditModeAction } from "../../../../../../../store/nFECourierReducer";
-import { setModalReserve } from "../../../../../../../store/modalReducer";
+import { setModalReserve, setModalUnreserve } from "../../../../../../../store/modalReducer";
 import { setCourierCounterRedux } from "../../../../../../../store/courierCounterReducer";
 
 const CourierItemRowMenu = ({courierId}) => {
@@ -25,14 +25,6 @@ const CourierItemRowMenu = ({courierId}) => {
   //context
   const courierStatus=useContext(StatusContext)
 
-
-  
-  //handlers
-  const onClickReserveHandler = () => {
-
-  }
-
-  
   return (
     <div className="couriers-item-row-menu">
 
@@ -67,23 +59,7 @@ const CourierItemRowMenu = ({courierId}) => {
 
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 
-              onClick={()=>{
-                dispatch(setModalReserve(courierId))
-
-                if (true) {
-                  return
-                }
-
-                dispatch(setSpinnerTrue())
-                changeCourierStatus(courierId,user.name, dispatch, setCourierCounterRedux).then(res=> {
-                  if (!res) {
-                }})
-
-                
-
-
-                }}
-                
+              onClick={()=>{dispatch(setModalReserve(courierId))}}          
                 >
                 Reserve
          </div>
@@ -92,13 +68,9 @@ const CourierItemRowMenu = ({courierId}) => {
       {(user.role === 'user')&&(courierStatus==='reserved')
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{
-                dispatch(setSpinnerTrue())
-                changeCourierStatus(courierId,'Free', dispatch, setCourierCounterRedux).then(res=> {
-                  console.log(res);
-                  if (!res) {
-                
-                }})
-                }}>
+                dispatch(setModalUnreserve(courierId))
+                }}
+                >
                 Unreserve
          </div>
         :null}

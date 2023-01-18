@@ -12,6 +12,7 @@ import { setSpinnerTrue } from "../../store/spinnerReducer";
 
 // onClickHandlers
 import onClickReserveHandler from "../../services/onClickHandlers/onClickReserveHandler";
+import onClickUnreserveHandler from "../../services/onClickHandlers/onClickUnreserveHandler";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Modal = () => {
 
   let onClickYes;
   if (modalAction==='reserve') { onClickYes = ()=>{onClickReserveHandler(dispatch,courierId,user) } }
+  if (modalAction==='unreserve') { onClickYes = ()=>{onClickUnreserveHandler(dispatch,courierId) } }
 
   return (
     <div className="modal" onClick={()=>{dispatch(setModalFalse())}}>
