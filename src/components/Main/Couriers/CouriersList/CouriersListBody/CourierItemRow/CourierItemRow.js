@@ -20,7 +20,7 @@ const CourierItemRow = ({ courier }) => {
       <div className="couriers-item-row__col">{courier["startedDay"]}</div>
       <div className="couriers-item-row__col">{courier["status"]}</div>
       {/* {console.log(courier)} */}
-      <CourierItemRowMenu courierId={courier._id}/>
+      <CourierItemRowMenu courierId={courier._id} courierName={courier["name"]}/>
 
 
     </div>

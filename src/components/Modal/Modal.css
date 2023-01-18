@@ -22,9 +22,14 @@
 
 .modal__content__content {
     flex-grow: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.modal__content__content p {
+    margin: 0 auto;
+
+
 }
 
 .modal__content__footer {

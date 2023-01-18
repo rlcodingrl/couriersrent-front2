@@ -11,19 +11,22 @@ export const modalReducer = (state = defaultState, action) => {
         return {
           modal: true,
           mode: 'reserve',
-          courierId: action.payload
+          courierId: action.payload.courierId,
+          courierName: action.payload.courierName
         }
       case SET_MODAL_UNRESERVE:
         return {
           modal: true,
           mode: 'unreserve',
-          courierId: action.payload
+          courierId: action.payload.courierId,
+          courierName: action.payload.courierName
         }
       case SET_MODAL_DELETE:
         return {
           modal: true,
           mode: 'delete',
-          courierId: action.payload
+          courierId: action.payload.courierId,
+          courierName: action.payload.courierName
         }
       case SET_MODAL_FALSE: 
         return false
@@ -31,7 +34,7 @@ export const modalReducer = (state = defaultState, action) => {
     }
   }
 
-export const setModalReserve = (courierId) => ({type: SET_MODAL_RESERVE, payload: courierId});
-export const setModalUnreserve = (courierId) => ({type: SET_MODAL_UNRESERVE, payload: courierId});
-export const setModalDelete = (courierId) => ({type: SET_MODAL_DELETE, payload: courierId});
+export const setModalReserve = (courierId, courierName) => ({type: SET_MODAL_RESERVE, payload: {courierId, courierName}});
+export const setModalUnreserve = (courierId, courierName) => ({type: SET_MODAL_UNRESERVE, payload: {courierId, courierName}});
+export const setModalDelete = (courierId, courierName) => ({type: SET_MODAL_DELETE, payload: {courierId, courierName}});
 export const setModalFalse = () => ({type: SET_MODAL_FALSE})

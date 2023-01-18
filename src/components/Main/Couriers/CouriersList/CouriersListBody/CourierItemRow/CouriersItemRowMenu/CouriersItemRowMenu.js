@@ -15,9 +15,9 @@ import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinn
 import {useDispatch, useSelector} from "react-redux";
 import { setFullInfoModeAction, setEditModeAction } from "../../../../../../../store/nFECourierReducer";
 import { setModalReserve, setModalUnreserve, setModalDelete } from "../../../../../../../store/modalReducer";
-import { setCourierCounterRedux } from "../../../../../../../store/courierCounterReducer";
 
-const CourierItemRowMenu = ({courierId}) => {
+
+const CourierItemRowMenu = ({courierId, courierName }) => {
   //redux
   const dispatch = useDispatch()
   const user = useSelector(state=>state.user)
@@ -49,7 +49,7 @@ const CourierItemRowMenu = ({courierId}) => {
       {user.role === 'admin'
               ?<div className="couriers-item-row__col def-btn" 
                     onClick={()=>{
-                      dispatch(setModalDelete(courierId))
+                      dispatch(setModalDelete(courierId, courierName))
                     }}>
                         Delete
                 </div>
@@ -57,7 +57,7 @@ const CourierItemRowMenu = ({courierId}) => {
 
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 
-              onClick={()=>{dispatch(setModalReserve(courierId))}}          
+              onClick={()=>{dispatch(setModalReserve(courierId, courierName))}}          
                 >
                 Reserve
          </div>
@@ -66,7 +66,7 @@ const CourierItemRowMenu = ({courierId}) => {
       {(user.role === 'user')&&(courierStatus==='reserved')
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{
-                dispatch(setModalUnreserve(courierId))
+                dispatch(setModalUnreserve(courierId, courierName))
                 }}
                 >
                 Unreserve

@@ -19,6 +19,7 @@ const Modal = () => {
   const dispatch = useDispatch();
   const modalAction = useSelector(state=>state.modal.mode)
   const courierId = useSelector(state=>state.modal.courierId)
+  const courierName = useSelector(state=>state.modal.courierName)
   const user = useSelector(state=>state.user)
 
   let onClickYes;
@@ -30,10 +31,12 @@ const Modal = () => {
     <div className="modal" onClick={()=>{dispatch(setModalFalse())}}>
       <div className="modal__content" onClick={(e)=>{e.stopPropagation()}}>
         <div className="modal__content__header">
-          {modalAction} {courierId}
+          {modalAction} 
         </div>
         <div className="modal__content__content">
-          Are you sure?
+          <p>Courier {courierName}</p>
+          <p>Are you sure?</p>
+          
         </div>
         <div className="modal__content__footer">
           <button onClick={()=>{onClickYes()}}>Yes</button>
