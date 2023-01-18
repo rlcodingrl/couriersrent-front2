@@ -2,13 +2,12 @@ import React from "react";
 
 import "./Modal.css";
 
-//redux
+//icon
+import CloseIcon from "../../assets/CloseIcon";
 
+//redux
 import { useDispatch, useSelector } from "react-redux";
 import { setModalFalse } from "../../store/modalReducer";
-
-
-//services
 
 // onClickHandlers
 import onClickReserveHandler from "../../services/onClickHandlers/onClickReserveHandler";
@@ -31,10 +30,10 @@ const Modal = () => {
     <div className="modal" onClick={()=>{dispatch(setModalFalse())}}>
       <div className="modal__content" onClick={(e)=>{e.stopPropagation()}}>
         <div className="modal__content__header">
-          {modalAction} 
+          <div  onClick={()=>{dispatch(setModalFalse())}}>{CloseIcon()}</div> 
         </div>
         <div className="modal__content__content">
-          <p>Courier {courierName}</p>
+          <p>{modalAction} {courierName}</p>
           <p>Are you sure?</p>
           
         </div>

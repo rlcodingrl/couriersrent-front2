@@ -11,7 +11,8 @@
 }
 
 .modal__content {
-    padding: 20px;
+    padding: 5px;
+    padding-bottom: 20px;
     border-radius: 12px;
     background-color: white;
     height: 200px;
@@ -28,8 +29,6 @@
 
 .modal__content__content p {
     margin: 0 auto;
-
-
 }
 
 .modal__content__footer {
@@ -40,5 +39,9 @@
 
 .modal__content__header {
     display: flex;
-    justify-content: space-around;
-} 
+    justify-content: flex-end
+}
+
+.modal .close-icon {
+    cursor: pointer;
+}
