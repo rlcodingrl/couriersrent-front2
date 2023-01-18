@@ -6,13 +6,14 @@ import "./Modal.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setModalFalse } from "../../store/modalReducer";
-import { setSpinnerTrue } from "../../store/spinnerReducer";
+
 
 //services
 
 // onClickHandlers
 import onClickReserveHandler from "../../services/onClickHandlers/onClickReserveHandler";
 import onClickUnreserveHandler from "../../services/onClickHandlers/onClickUnreserveHandler";
+import onClickDeleteHandler from "../../services/onClickHandlers/onClickDeleteHandler";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Modal = () => {
   let onClickYes;
   if (modalAction==='reserve') { onClickYes = ()=>{onClickReserveHandler(dispatch,courierId,user) } }
   if (modalAction==='unreserve') { onClickYes = ()=>{onClickUnreserveHandler(dispatch,courierId) } }
+  if (modalAction==='delete') { onClickYes = ()=>{onClickDeleteHandler(dispatch,courierId) } }
 
   return (
     <div className="modal" onClick={()=>{dispatch(setModalFalse())}}>

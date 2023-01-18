@@ -7,7 +7,6 @@ import { StatusContext } from "../../../../Couriers";
 
 
 //services
-import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 import deleteCourier from "../../../../../../../services/deleteCourier";
 
 //redux
@@ -15,7 +14,7 @@ import deleteCourier from "../../../../../../../services/deleteCourier";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../../../../store/spinnerReducer";
 import {useDispatch, useSelector} from "react-redux";
 import { setFullInfoModeAction, setEditModeAction } from "../../../../../../../store/nFECourierReducer";
-import { setModalReserve, setModalUnreserve } from "../../../../../../../store/modalReducer";
+import { setModalReserve, setModalUnreserve, setModalDelete } from "../../../../../../../store/modalReducer";
 import { setCourierCounterRedux } from "../../../../../../../store/courierCounterReducer";
 
 const CourierItemRowMenu = ({courierId}) => {
@@ -42,16 +41,15 @@ const CourierItemRowMenu = ({courierId}) => {
               ?<div className="couriers-item-row__col def-btn"
                     onClick={()=>{
                       dispatch(setEditModeAction(courierId))
-                    }}
-                      >Edit
+                    }}>
+                      Edit
               </div>:null}
 
 
       {user.role === 'admin'
               ?<div className="couriers-item-row__col def-btn" 
                     onClick={()=>{
-                      dispatch(setSpinnerTrue())
-                      deleteCourier(courierId,dispatch, setCourierCounterRedux)
+                      dispatch(setModalDelete(courierId))
                     }}>
                         Delete
                 </div>
