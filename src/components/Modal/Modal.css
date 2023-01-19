@@ -45,3 +45,17 @@
 .modal .close-icon {
     cursor: pointer;
 }
+
+.modal .yesNoBtn {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.modal .yesNoBtn:hover {
+transform: scale(1.08);
+}
+
+.modal .modal_actionText {
+    text-transform: capitalize;
+}

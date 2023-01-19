@@ -1,0 +1,9 @@
+.yes-icon:hover {
+    transform: scale(1.2);
+
+}
+
+.add-icon {
+    display: block;
+    transition: 0.4s;
+}

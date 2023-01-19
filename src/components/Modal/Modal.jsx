@@ -4,6 +4,8 @@ import "./Modal.css";
 
 //icon
 import CloseIcon from "../../assets/CloseIcon";
+import YesIcon from "../../assets/YesIcon";
+import NoIcon from "../../assets/NoIcon";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -33,13 +35,24 @@ const Modal = () => {
           <div  onClick={()=>{dispatch(setModalFalse())}}>{CloseIcon()}</div> 
         </div>
         <div className="modal__content__content">
-          <p>{modalAction} {courierName}</p>
+          <p>
+            <span className="modal_actionText">
+               {modalAction}{` `}
+            </span>
+            <span>
+              {courierName}
+            </span>
+          </p>
           <p>Are you sure?</p>
           
         </div>
         <div className="modal__content__footer">
-          <button onClick={()=>{onClickYes()}}>Yes</button>
-          <button onClick={()=>{dispatch(setModalFalse())}}>No</button>
+          <div className="yesNoBtn" onClick={()=>{onClickYes()}} >
+            {YesIcon()}
+          </div>
+          <div className="yesNoBtn" onClick={()=>{dispatch(setModalFalse())}}>
+            {NoIcon()}
+          </div>
         </div>
       </div>
     </div>
