@@ -1,7 +1,7 @@
 .couriers-item-row {
     display: flex;
-    background-color: rgba(219, 219, 219, 0.2);
-    padding: 0px 15px 0px 15px;
+    /* background-color: rgba(219, 219, 219, 0.2); */
+    padding: 0px;
 }
 
 .couriers-item-row__col.couriers-item-row__name {

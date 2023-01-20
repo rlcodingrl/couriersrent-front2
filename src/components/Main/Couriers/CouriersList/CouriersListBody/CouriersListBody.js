@@ -33,8 +33,6 @@ const CouriersListBody = () => {
     
     dispatch(setSpinnerTrue())
     dispatch(setAuthTrue())
-    // console.log('roman')
-    // setSpinner(true)
     getCouriers(courierStatus, user).then(res=>{
       setCouriersData(res);
       dispatch(setSpinnerFalse());
@@ -45,9 +43,12 @@ const CouriersListBody = () => {
   return (
 
       <div className="couriers-list-body">
-        {couriersData.map((el) => (
+        { couriersData
+          ?couriersData.map((el) => (
           <CourierItemRow courier={el} key={el._id} />
-        ))}
+          ))
+          :<span>no reserved couriers</span>
+      }
       </div>
 
   );
