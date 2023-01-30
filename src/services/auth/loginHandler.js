@@ -31,17 +31,8 @@ export const loginHandler = async (
     })
     .then((result) => {
       if (result.user) {
-        // console.log(result);
-        // console.log("login success");
-        // console.log(result.data.access_token);
-        // console.log(result.user);
-
         let userData = transformUserData(result);
-        // console.log(userData);
-
-        // setUser(userData);
         dispatch(setUserDataAction(userData));
-        // console.log("login hadnler works");
         localStorage.setItem("jwt", userData.jwt);
         dispatch(setAuthTrue());
       }

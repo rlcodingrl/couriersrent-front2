@@ -26,7 +26,7 @@ const Auth = () => {
   return (
     <div className="auth">
       <div className="auth-inner-wrapper">
-      <h1>Couriers rent service</h1>
+      <h1>Couriers rent service1</h1>
       <form
         action=""
         onSubmit={async (e) => {
