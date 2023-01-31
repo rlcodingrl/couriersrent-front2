@@ -1,12 +1,9 @@
 /* eslint-disable react/jsx-pascal-case */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {useForm} from 'react-hook-form'
 
 import "./NFECourier.css";
 
-//contexts
-import { courierUpdateContext } from "../Couriers";
-// import { nFECourierContext } from "../Couriers";
 // functions
 import createNewUser from "../../../../services/createNewUser";
 import getCourier from "../../../../services/getCourier";
@@ -14,13 +11,13 @@ import editCourier from "../../../../services/editCourier";
 //redux
 import {useDispatch, useSelector} from "react-redux";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../store/spinnerReducer";
-import { setAuthTrue } from "../../../../store/ifAuthReducer";
 import { setCourierFullInfoAction } from "../../../../store/courierFullInfoReducer";
 import { setCourierCounterRedux } from "../../../../store/courierCounterReducer";
 
 // components
 import NFECourierHeader from "./NFECourierHeader";
 import NFECourierBody from "./NFECourierBody";
+import NFECourierFooter from "./NFECourierFooter";
 
 import NFECourier_1clm from "./NFECourierBody/NFECourier_1clm";
 import NFECourier_2clm from "./NFECourierBody/NFECourier_2clm";
@@ -119,8 +116,9 @@ const NFECourier = () => {
           <NFECourier_1clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
           <NFECourier_2clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
           <NFECourier_3clm form={{register, errors}} courierFullInfo={courierFullInfo}/>
-          <NFECourier_4clm form={{isValid}} ifCreateSuccessful={ifCreateSuccessful}/>
+          <NFECourier_4clm />
         </NFECourierBody>
+        <NFECourierFooter form={{isValid}} ifCreateSuccessful={ifCreateSuccessful}/>
 
       </form>
     </div>
