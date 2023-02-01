@@ -63,7 +63,7 @@ const NFECourier = () => {
       })
   
     }
-    console.log(nFECourier)
+    // console.log(nFECourier)
   // eslint-disable-next-line
   },[])
 

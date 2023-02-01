@@ -8,7 +8,7 @@ import getCourierMessages from "../../../../../../../../services/couriers/getCou
 //redux
 import {useDispatch, useSelector } from "react-redux";
 
-import { setCourierChatRedux } from "../../../../../../../../store/courierChatReducer";
+import { setCourierChatAction } from "../../../../../../../../store/courierChatReducer";
 
 const ChatHistory = () => {
 
@@ -20,10 +20,10 @@ const ChatHistory = () => {
     console.log('use effect chat works')
     getCourierMessages(courierId).then(res=>{
       console.log(res)
-      dispatch(setCourierChatRedux(res));
+      dispatch(setCourierChatAction(res));
     });
   // eslint-disable-next-line
-  }, []);
+  }, [courierId]);
 
     return (
       <div className="chat-history">

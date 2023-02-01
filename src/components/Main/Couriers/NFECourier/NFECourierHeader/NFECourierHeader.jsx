@@ -12,6 +12,7 @@ import CloseIcon from "../../../../../assets/CloseIcon";
 import { useDispatch } from "react-redux";
 import { clearCourierFullInfoAction } from "../../../../../store/courierFullInfoReducer";
 import { setCloseNFEAction } from "../../../../../store/nFECourierReducer";
+import { clearCourierChatAction } from "../../../../../store/courierChatReducer";
 
 const NFECourierHeader = () => {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const NFECourierHeader = () => {
                                                     // setNFECourier({active: false, courierId: ''})
                                                     dispatch(clearCourierFullInfoAction())
                                                     dispatch(setCloseNFEAction())
+                                                    dispatch(clearCourierChatAction())
                                                     }}>
           {CloseIcon()}
         </span>
