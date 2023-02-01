@@ -9,6 +9,7 @@ import { nFEReducer } from "./nFECourierReducer";
 import { usersListReducer } from "./usersListReducer";
 import { modalReducer } from "./modalReducer";
 import { courierCounterReducer } from "./courierCounterReducer";
+import { courierChatReducer } from "./courierChatReducer";
 
 const rootReducer = combineReducers({
     ifAuth: ifAuthReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     courierCounterReducer: courierCounterReducer,
     nFE: nFEReducer,
     courier: courierFullInfoReducer,
+    courierChat: courierChatReducer,
     usersList: usersListReducer
 })
 

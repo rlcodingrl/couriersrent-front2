@@ -31,11 +31,6 @@ const getCouriers = async (courierStatus, user) => {
   };
 
   let path = `${back}/couriers/${courierStatus}`;
-//   if (id !== 'none') {
-//     path = `${back}/couriers/${id}`
-//   }
-
-
 
   const resThisFunc = fetch(path, requestOptions)
     .then((response) => {
