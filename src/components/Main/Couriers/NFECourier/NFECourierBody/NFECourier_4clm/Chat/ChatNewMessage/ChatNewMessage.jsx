@@ -9,6 +9,7 @@ import {
 } from "../../../../../../../../store/spinnerReducer";
 
 import sendCourierMessage from "../../../../../../../../services/couriers/sendCourierMessage";
+import getCourierMessages from "../../../../../../../../services/couriers/getCourierMessages";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +39,9 @@ const ChatNewMessage = () => {
           dispatch(setSpinnerTrue());
           sendCourierMessage(courierId, userId, text).then((res) => {
             console.log(res);
+            setText('')
             dispatch(setSpinnerFalse());
+            getCourierMessages(courierId)
           });
         }}
       >

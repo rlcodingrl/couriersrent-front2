@@ -25,7 +25,7 @@ const sendCourierMessage = async (courierId, userId, textMsg) => {
   console.log('before fetch')
   const resFunc = fetch(`${back}/sendMessage`, requestOptions)
   .then(response => {
-    return response.json()
+    return response.text()
 })
   .then(result => {
     console.log(result)
