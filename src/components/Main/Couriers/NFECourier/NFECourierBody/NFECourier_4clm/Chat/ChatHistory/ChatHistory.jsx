@@ -21,10 +21,10 @@ const ChatHistory = () => {
   const chatArr = useSelector(state=>state.courierChat)
 
   useEffect(() => {
-    console.log('use effect chat works')
+    // console.log('use effect chat works')
     if (courierId) {
       getCourierMessages(courierId).then(res=>{
-        console.log(res)
+        // console.log(res)
         dispatch(setCourierChatAction(res));
       })
     }
@@ -33,12 +33,11 @@ const ChatHistory = () => {
   // eslint-disable-next-line
   }, [courierId]);
 
-  {console.log(Array.isArray(chatArr))}
     return (
       <div className="chat-history">
         { Array.isArray(chatArr)
           ?chatArr.map(el=><ChatMessage messageObj={el} key={el.date}/>)
-          :null
+          : <span>Loading ... </span>
         }
       </div>
     );

@@ -1,17 +1,51 @@
 import React from "react";
+import { useState } from "react";
 
 import "./ChatNewMessage.css";
 
+import {
+  setSpinnerTrue,
+  setSpinnerFalse,
+} from "../../../../../../../../store/spinnerReducer";
+
+import sendCourierMessage from "../../../../../../../../services/couriers/sendCourierMessage";
+
+//redux
+import { useDispatch, useSelector } from "react-redux";
+
 const ChatNewMessage = () => {
+  const courierId = useSelector((state) => state.courier._id);
+  const userId = useSelector((state) => state.user.id);
 
-    return (
-      <div className="chat-new-message">
-        <input type="textarea" />
-        <br/>
-        <button>submit</button>
-      </div>
-    );
-    
-}
+  const dispatch = useDispatch();
+  const [text, setText] = useState("");
 
-export default ChatNewMessage
+  console.log(text);
+
+  return (
+    <div className="chat-new-message">
+      <textarea
+        name=""
+        id=""
+        rows="4"
+        onChange={(e) => setText(e.target.value)}
+        value={text}
+      ></textarea>
+      <br />
+      <button
+        onClick={() => {
+          console.log('onclick works')
+          dispatch(setSpinnerTrue());
+          sendCourierMessage(courierId, userId, text).then((res) => {
+            console.log(res);
+            dispatch(setSpinnerFalse());
+          });
+        }}
+      >
+        submit
+      </button>
+    </div>
+  );
+};
+
+export default ChatNewMessage;
