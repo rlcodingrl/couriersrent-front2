@@ -1,4 +1,4 @@
-import { back } from "../config/config";
+import { back } from "../../config/config";
 
 const changeCourierStatus = async (courierId, newStatus, dispatch, funcToUpdateCourierList) => {
   console.log('changeCourierStatus works')

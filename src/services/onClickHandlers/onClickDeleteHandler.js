@@ -1,5 +1,5 @@
 import { setSpinnerTrue } from "../../store/spinnerReducer"
-import deleteCourier from "../deleteCourier"
+import deleteCourier from "../couriers/deleteCourier"
 import { setCourierCounterRedux } from "../../store/courierCounterReducer"
 import { setModalFalse } from "../../store/modalReducer"
 

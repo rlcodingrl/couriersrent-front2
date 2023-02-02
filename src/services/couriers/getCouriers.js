@@ -1,4 +1,4 @@
-import { back } from "../config/config";
+import { back } from "../../config/config";
 
 const getCouriers = async (courierStatus, user) => {
 

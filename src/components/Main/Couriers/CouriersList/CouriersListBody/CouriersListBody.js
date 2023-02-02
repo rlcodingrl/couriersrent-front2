@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import CourierItemRow from "./CourierItemRow/CourierItemRow";
 
 import "./CouriersListBody.css";
-import getCouriers from "../../../../../services/getCouriers";
+import getCouriers from "../../../../../services/couriers/getCouriers";
 import couriersDataDef from "../../../../../data/couriersDataDef";
 import { StatusContext } from "../../Couriers";
 

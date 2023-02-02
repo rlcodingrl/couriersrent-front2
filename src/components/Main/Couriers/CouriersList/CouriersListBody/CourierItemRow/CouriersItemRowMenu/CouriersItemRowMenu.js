@@ -7,7 +7,7 @@ import { StatusContext } from "../../../../Couriers";
 
 
 //services
-import deleteCourier from "../../../../../../../services/deleteCourier";
+import deleteCourier from "../../../../../../../services/couriers/deleteCourier";
 
 //redux
 // eslint-disable-next-line

@@ -5,14 +5,15 @@ import {useForm} from 'react-hook-form'
 import "./NFECourier.css";
 
 // functions
-import createNewUser from "../../../../services/createNewUser";
-import getCourier from "../../../../services/getCourier";
-import editCourier from "../../../../services/editCourier";
+import createNewUser from "../../../../services/couriers/createNewUser";
+import getCourier from "../../../../services/couriers/getCourier";
+import editCourier from "../../../../services/couriers/editCourier";
 //redux
 import {useDispatch, useSelector} from "react-redux";
 import { setSpinnerFalse,setSpinnerTrue } from "../../../../store/spinnerReducer";
 import { setCourierFullInfoAction } from "../../../../store/courierFullInfoReducer";
 import { setCourierCounterRedux } from "../../../../store/courierCounterReducer";
+import { clearCourierChatAction } from "../../../../store/courierChatReducer";
 
 // components
 import NFECourierHeader from "./NFECourierHeader";
@@ -83,10 +84,12 @@ const NFECourier = () => {
     dispatch(setSpinnerTrue())
 
     if ( nFECourier.active==='new' ) {
+      console.log('this is new mode submit')
       createNewUser(data).then(res=>{
         if (res.status===true) { 
           console.log('user created successful')
           setIfCreateSuccessful(true);
+          dispatch(clearCourierChatAction())
           dispatch(setCourierCounterRedux())
           reset()
           dispatch(setSpinnerFalse())

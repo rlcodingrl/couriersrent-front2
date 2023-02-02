@@ -22,10 +22,14 @@ const ChatHistory = () => {
 
   useEffect(() => {
     console.log('use effect chat works')
-    getCourierMessages(courierId).then(res=>{
-      console.log(res)
-      dispatch(setCourierChatAction(res));
-    });
+    if (courierId) {
+      getCourierMessages(courierId).then(res=>{
+        console.log(res)
+        dispatch(setCourierChatAction(res));
+      })
+    }
+
+
   // eslint-disable-next-line
   }, [courierId]);
 

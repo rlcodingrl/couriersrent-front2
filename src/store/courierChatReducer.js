@@ -1,6 +1,6 @@
 const defaultState = 'no courier selected'
 
-const SET_CHAT = "SET_COURIER_COUNTER";
+const SET_CHAT = "SET_CHAT";
 const SET_CHAT_EMPTY = "SET_CHAT_EMPTY"
   
 export const courierChatReducer = (state = defaultState, action) => {
