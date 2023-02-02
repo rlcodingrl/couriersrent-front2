@@ -11,8 +11,11 @@ import {
 import sendCourierMessage from "../../../../../../../../services/couriers/sendCourierMessage";
 import getCourierMessages from "../../../../../../../../services/couriers/getCourierMessages";
 
+
 //redux
 import { useDispatch, useSelector } from "react-redux";
+import { setCourierChatAction } from "../../../../../../../../store/courierChatReducer";
+
 
 const ChatNewMessage = () => {
   const courierId = useSelector((state) => state.courier._id);
@@ -41,7 +44,10 @@ const ChatNewMessage = () => {
             console.log(res);
             setText('')
             dispatch(setSpinnerFalse());
-            getCourierMessages(courierId)
+            getCourierMessages(courierId).then(res=>{
+              // console.log(res)
+              dispatch(setCourierChatAction(res));
+            })
           });
         }}
       >
