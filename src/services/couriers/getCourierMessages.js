@@ -32,19 +32,6 @@ const getCourierMessages = async (courierId) => {
   .catch(error => console.log('error', error));
 
   return resFunc
-
-//   const resFunc = fetch(`${back}/getMessages`, requestOptions)
-//     .then((response) => {
-//       console.log(response);
-//       return response.json();
-//     })
-//     .then((result) => {
-//       console.log(result);
-//       return result;
-//     })
-//     .catch((error) => console.log("error", error));
-
-//   return resFunc;
 };
 
 export default getCourierMessages;

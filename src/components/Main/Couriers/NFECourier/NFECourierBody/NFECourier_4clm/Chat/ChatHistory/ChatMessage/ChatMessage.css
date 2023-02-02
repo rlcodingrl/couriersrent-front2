@@ -1,0 +1,12 @@
+.chat-message {
+    font-size: 13px;
+}
+
+.chat-message__author {
+    font-style: italic;
+    color: gray;
+}
+
+.chat-message_align-right {
+    text-align: right;
+}

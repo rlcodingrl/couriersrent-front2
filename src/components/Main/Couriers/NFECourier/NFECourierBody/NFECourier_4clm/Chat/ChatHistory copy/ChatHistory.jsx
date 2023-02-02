@@ -3,15 +3,12 @@ import { useEffect } from "react";
 
 import "./ChatHistory.css";
 
-import getCourierMessages from "../../../../../../../../services/couriers/getCourierMessages";
-
-//components
-import ChatMessage from "./ChatMessage";
+import getCourierMessages from "../../../../../../../../../services/couriers/getCourierMessages";
 
 //redux
 import {useDispatch, useSelector } from "react-redux";
 
-import { setCourierChatAction } from "../../../../../../../../store/courierChatReducer";
+import { setCourierChatAction } from "../../../../../../../../../store/courierChatReducer";
 
 const ChatHistory = () => {
 
@@ -29,12 +26,16 @@ const ChatHistory = () => {
   // eslint-disable-next-line
   }, [courierId]);
 
-  {console.log(Array.isArray(chatArr))}
     return (
       <div className="chat-history">
-        { Array.isArray(chatArr)
-          ?chatArr.map(el=><ChatMessage messageObj={el} key={el.date}/>)
-          :null
+        { chatArr.map((el=>{
+          return (
+            <div>
+              {el.user_name}
+              {el.text}
+            </div>
+          )
+          }))
         }
       </div>
     );
