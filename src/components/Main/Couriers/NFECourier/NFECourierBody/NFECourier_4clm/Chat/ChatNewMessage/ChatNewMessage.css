@@ -1,2 +1,7 @@
+.chat-new-message input {
+    width: 100%;
+}
 
-
+.chat-new-message button {
+    width: 50px;
+}

@@ -6,7 +6,9 @@ const ChatNewMessage = () => {
 
     return (
       <div className="chat-new-message">
-        <div>Place for new message</div>
+        <input type="textarea" />
+        <br/>
+        <button>submit</button>
       </div>
     );
     
