@@ -1,5 +1,9 @@
 .chat-history {
-    /* background-color: azure; */
     padding-bottom: 10px;
+    height: 300px;
+    overflow-y: scroll;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+    padding-right: 5px;
 }
 
