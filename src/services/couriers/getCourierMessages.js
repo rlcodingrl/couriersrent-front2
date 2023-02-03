@@ -7,6 +7,7 @@ const getCourierMessages = async (courierId) => {
 //   console.log(courierId)
 
   var myHeaders = new Headers();
+  myHeaders.append("Authorization", `${jwt}`);
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
