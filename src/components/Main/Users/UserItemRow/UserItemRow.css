@@ -1,0 +1,10 @@
+.userItemRow {
+    font-size: 13px;
+    margin-bottom: 10px;
+    border-left: 1px solid #a3a3a3;
+    padding-left: 10px;
+}
+
+.input-balance {
+    margin-left: 10px;
+}

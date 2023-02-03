@@ -33,7 +33,8 @@ const Users = () => {
 
   return (
     <div className="users">
-      Here is user list:
+      <div className="users-header">All users and admins:</div>
+      
       {usersList&&usersList.map((el) => (
         <UserItemRow user={el} key={el._id} />
       ))}

@@ -27,8 +27,8 @@ const NFECourierFooter = ({form, ifCreateSuccessful}) => {
           {ifCreateSuccessful && (
             <p className="success-msg">
               user
-              {console.log(nFECourier.active)}
-              {console.log(nFECourier.active === "new")}
+              {/* {console.log(nFECourier.active)}
+              {console.log(nFECourier.active === "new")} */}
               {nFECourier.active === "new" && <span> creating </span>}
               {nFECourier.active === "edit" && <span> editing </span>}
               done

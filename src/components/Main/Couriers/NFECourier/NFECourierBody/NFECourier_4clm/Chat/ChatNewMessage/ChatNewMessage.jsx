@@ -24,7 +24,7 @@ const ChatNewMessage = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
 
-  console.log(text);
+  // console.log(text);
 
   return (
     <div className="chat-new-message">
