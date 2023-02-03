@@ -7,12 +7,14 @@ import setWallet from "../../../services/users/setWallet";
 import { useDispatch, useSelector } from "react-redux";
 import { setSpinnerFalse, setSpinnerTrue  } from "../../../store/spinnerReducer";
 import { useState } from "react";
-
+import { ifValidJwtFunc } from "../../../services/auth/ifValidJwtFunc";
+import { setAuthTrue } from "../../../store/ifAuthReducer";
+import { setUserDataAction } from "../../../store/userReducer";
 
 const Profile = () => {
 
   const dispatch = useDispatch();
-  
+  const jwt = localStorage.getItem('jwt')
   const [walletInput, setWalletInput] = useState('')
 
   const user = useSelector(state => state.user)
@@ -30,9 +32,18 @@ const Profile = () => {
             dispatch(setSpinnerTrue())
             setWallet(user.id,walletInput).then(res=>{
               console.log(res)
-                dispatch(setSpinnerFalse())
-                setWalletInput('');
+                
             
+            })
+            .then(res=>{
+              ifValidJwtFunc(jwt, dispatch, setAuthTrue, setUserDataAction)
+              .then(
+                res=>{
+                  dispatch(setSpinnerFalse())
+                setWalletInput('');
+                }
+              )
+
             })
         }}>
           Change wallet
