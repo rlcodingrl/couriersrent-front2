@@ -3,6 +3,9 @@ import React from "react";
 import { logout } from "../../../services/auth/logout";
 import { NavLink } from "react-router-dom";
 
+
+
+
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthFalse } from "../../../store/ifAuthReducer";
@@ -19,7 +22,15 @@ const Profile = () => {
   // console.log(user);
   return (
     <div className="profile">
-      {user.balance}$ {user.name}{" "}
+      <span className="profile-balance">
+      {user.balance}$
+      </span>
+      <span className="profile-name">
+      {user.name}
+      </span>
+
+      
+
       <NavLink
         onClick={() => {
           logout(dispatch, setAuthFalse, clearUserDataAction);
