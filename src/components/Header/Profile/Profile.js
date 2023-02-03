@@ -26,7 +26,11 @@ const Profile = () => {
       {user.balance}$
       </span>
       <span className="profile-name">
-      {user.name}
+      <NavLink to="/profile"
+      >
+        {user.name} 
+      </NavLink>
+      
       </span>
 
       

@@ -8,6 +8,7 @@ import ReservedCouriers from "./Couriers/ReservedCouriers";
 import Rules from "./Rules";
 import Users from "./Users";
 import Home from "./Home";
+import Profile from "./Profile";
 
 const Main = () => {
   return (
@@ -24,6 +25,7 @@ const Main = () => {
         />
         <Route path="/rules" element={<Rules />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

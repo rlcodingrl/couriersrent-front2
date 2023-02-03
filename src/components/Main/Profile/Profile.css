@@ -1,0 +1,17 @@
+.profile {
+    padding: 10px;
+}
+
+.wallet-input {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.wallet-row {
+    display: flex;
+    padding-top: 5px;
+}
+
+.change-wallet-btn {
+    width: 120px;
+}
