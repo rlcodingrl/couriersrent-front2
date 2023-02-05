@@ -24,7 +24,7 @@ const AuthOrApp = () => {
   const modalRedux = useSelector(state=>state.modal)
 
   useEffect(() => {
-    ifValidJwtFunc(user.jwt, dispatch, setAuthTrue, setUserDataAction);
+    ifValidJwtFunc(dispatch, setAuthTrue, setUserDataAction);
   }, []);
 
 

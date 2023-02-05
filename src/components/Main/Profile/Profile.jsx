@@ -36,7 +36,7 @@ const Profile = () => {
             
             })
             .then(res=>{
-              ifValidJwtFunc(jwt, dispatch, setAuthTrue, setUserDataAction)
+              ifValidJwtFunc(dispatch, setAuthTrue, setUserDataAction)
               .then(
                 res=>{
                   dispatch(setSpinnerFalse())

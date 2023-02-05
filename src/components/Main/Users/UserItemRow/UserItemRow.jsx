@@ -17,7 +17,6 @@ import setBalance from "../../../../services/users/setBalance";
 const UserItemRow = ({user}) => {
 
   const dispatch = useDispatch()
-  const userId = useSelector(state => state.user.id)
 
   const [newBalance, setNewBalance] = useState('')
   
@@ -28,7 +27,7 @@ const UserItemRow = ({user}) => {
       <button onClick={
         ()=>{
           dispatch(setSpinnerTrue())
-          setBalance(userId,newBalance).then(res=>{
+          setBalance(user._id,newBalance).then(res=>{
             console.log(res)
             getUsers().then( res => {
               dispatch(setSpinnerFalse())

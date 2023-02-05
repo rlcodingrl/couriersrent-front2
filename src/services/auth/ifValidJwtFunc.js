@@ -1,7 +1,10 @@
 import { back } from "../../config/config";
 import { transformUserData } from "./transformUserData";
 
-export const ifValidJwtFunc = async (jwt, dispatch, setAuthTrue, setUserDataAction) => {
+export const ifValidJwtFunc = async (dispatch, setAuthTrue, setUserDataAction) => {
+
+  const jwt = localStorage.getItem("jwt");
+
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${jwt}`);
 
