@@ -20,11 +20,11 @@ const AuthOrApp = () => {
 
   const spinnerRedux = useSelector(state=>state.spinner)
   const authRedux = useSelector(state=>state.ifAuth)
-  const user = useSelector(state=>state.user)
   const modalRedux = useSelector(state=>state.modal)
 
   useEffect(() => {
     ifValidJwtFunc(dispatch, setAuthTrue, setUserDataAction);
+    // eslint-disable-next-line
   }, []);
 
 

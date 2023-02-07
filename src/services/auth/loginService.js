@@ -1,7 +1,7 @@
 import { back } from "../../config/config";
 import { transformUserData } from "./transformUserData";
 
-export const loginHandler = async (
+export const loginService = async (
   { login, password },
   dispatch,
   setAuthTrue,

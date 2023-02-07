@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
-import { loginHandler } from "../../services/auth/loginHandler";
+import React, { useState } from "react";
 
 //redux
-import { setSpinnerFalse,setSpinnerTrue } from "../../store/spinnerReducer";
-import { setAuthTrue, setAuthFalse } from "../../store/ifAuthReducer";
-import { setUserDataAction } from "../../store/userReducer";
 import {useDispatch} from "react-redux";
 
+//handler
+import onClickLoginHandler from "../../onClickHandlers/onClickLoginHandler";
 
 import "./Auth.css";
 
@@ -29,19 +27,8 @@ const Auth = () => {
       <h1>Couriers rent service ver 1.0</h1>
       <form
         action=""
-        onSubmit={async (e) => {
-          dispatch(setSpinnerTrue())     
-          e.preventDefault();
-          let res = await loginHandler(form, dispatch, setAuthTrue, setUserDataAction);
-          console.log(res)
-          if (res.success) {
-            dispatch(setSpinnerFalse())
-          }
-          if (res.message==='Invalid username or password'||res.message==='User not found') {
-            setShowInvPass(true)
-            dispatch(setSpinnerFalse())
-          }
-          
+        onSubmit={ (e) => {
+          onClickLoginHandler(e, dispatch, form, setShowInvPass)     
         }}
       >
         <div className="auth-first-row">

@@ -22,7 +22,7 @@ const setWallet = async (userId, newWallet) => {
   let res = await fetch(`${back}/user/setWallet`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       return result;
     })
     .catch((error) => {

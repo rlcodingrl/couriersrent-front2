@@ -2,19 +2,15 @@ import React from "react";
 
 import "./Profile.css";
 
-import setWallet from "../../../services/users/setWallet";
-
 import { useDispatch, useSelector } from "react-redux";
-import { setSpinnerFalse, setSpinnerTrue  } from "../../../store/spinnerReducer";
 import { useState } from "react";
-import { ifValidJwtFunc } from "../../../services/auth/ifValidJwtFunc";
-import { setAuthTrue } from "../../../store/ifAuthReducer";
-import { setUserDataAction } from "../../../store/userReducer";
+
+//handlers
+import changeWalletHandler from "../../../onClickHandlers/changeWalletHandler";
 
 const Profile = () => {
 
   const dispatch = useDispatch();
-  const jwt = localStorage.getItem('jwt')
   const [walletInput, setWalletInput] = useState('')
 
   const user = useSelector(state => state.user)
@@ -29,22 +25,7 @@ const Profile = () => {
       </div>
       <div className="wallet-row">
         <button className="change-wallet-btn" onClick={()=>{
-            dispatch(setSpinnerTrue())
-            setWallet(user.id,walletInput).then(res=>{
-              console.log(res)
-                
-            
-            })
-            .then(res=>{
-              ifValidJwtFunc(dispatch, setAuthTrue, setUserDataAction)
-              .then(
-                res=>{
-                  dispatch(setSpinnerFalse())
-                setWalletInput('');
-                }
-              )
-
-            })
+            changeWalletHandler(dispatch, user, walletInput, setWalletInput)                  
         }}>
           Change wallet
         </button>
