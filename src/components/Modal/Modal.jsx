@@ -11,22 +11,16 @@ import NoIcon from "../../assets/NoIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalFalse } from "../../store/modalReducer";
 
-// onClickHandlers
-import onClickReserveHandler from "../../services/onClickHandlers/onClickReserveHandler";
-import onClickUnreserveHandler from "../../services/onClickHandlers/onClickUnreserveHandler";
-import onClickDeleteHandler from "../../services/onClickHandlers/onClickDeleteHandler";
+//customHook
+import useWhatOnYesToDo from "../../custom-hooks/useWhatOnYesToDo";
+
 
 const Modal = () => {
   const dispatch = useDispatch();
   const modalAction = useSelector(state=>state.modal.mode)
-  const courierId = useSelector(state=>state.modal.courierId)
   const courierName = useSelector(state=>state.modal.courierName)
-  const user = useSelector(state=>state.user)
 
-  let onClickYes;
-  if (modalAction==='reserve') { onClickYes = ()=>{onClickReserveHandler(dispatch,courierId,user) } }
-  if (modalAction==='unreserve') { onClickYes = ()=>{onClickUnreserveHandler(dispatch,courierId) } }
-  if (modalAction==='delete') { onClickYes = ()=>{onClickDeleteHandler(dispatch,courierId) } }
+  const onClickYes = useWhatOnYesToDo()
 
   return (
     <div className="modal" onClick={()=>{dispatch(setModalFalse())}}>
@@ -47,10 +41,10 @@ const Modal = () => {
           
         </div>
         <div className="modal__content__footer">
-          <div className="yesNoBtn" onClick={()=>{onClickYes()}} >
+          <div className="yesNoBtn" onClick={onClickYes} >
             {YesIcon()}
           </div>
-          <div className="yesNoBtn" onClick={()=>{dispatch(setModalFalse())}}>
+          <div className="yesNoBtn" onClick={onClickYes}>
             {NoIcon()}
           </div>
         </div>
