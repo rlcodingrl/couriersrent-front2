@@ -8,7 +8,7 @@ import ChatNewMessage from "./ChatNewMessage";
 const Chat = () => {
 
     return (
-      <div className="chat" scrollTop={9999}>
+      <div className="chat" scrolltop={9999}>
         <ChatHistory/>
         <ChatNewMessage/>
       </div>

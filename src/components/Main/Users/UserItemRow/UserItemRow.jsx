@@ -5,14 +5,9 @@ import "./UserItemRow.css";
 
 // redux
 import { useDispatch } from "react-redux"; 
-import { setSpinnerFalse, setSpinnerTrue } from "../../../../store/spinnerReducer";
-import { useSelector } from "react-redux";
-import { setUsersListAction } from "../../../../store/usersListReducer";
 
-//services
-import getUsers from "../../../../services/users/getUsers";
-import setBalance from "../../../../services/users/setBalance";
-
+//handler
+import changeBalanceHandler from "../../../../onClickHandlers/changeBalanceHandler";
 
 const UserItemRow = ({user}) => {
 
@@ -26,18 +21,10 @@ const UserItemRow = ({user}) => {
       <div>balance = { user.balance }$, wallet = { user.wallet }</div>
       <button onClick={
         ()=>{
-          dispatch(setSpinnerTrue())
-          setBalance(user._id,newBalance).then(res=>{
-            console.log(res)
-            getUsers().then( res => {
-              dispatch(setSpinnerFalse())
-              dispatch(setUsersListAction(res.data.users))
-              setNewBalance('');
-            }
-          )
-          })
-
-      }}>change balance</button>
+          changeBalanceHandler(dispatch,user,newBalance, setNewBalance)
+      }}>
+        change balance
+      </button>
       <input className="input-balance" type="text" onChange={e=>setNewBalance(e.target.value)} value={newBalance}/>
     </div>    
   )
